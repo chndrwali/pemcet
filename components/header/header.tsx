@@ -13,7 +13,7 @@ interface HeaderProps {
 export const Header = ({ currentUser }: HeaderProps) => {
   const pathname = usePathname();
 
-  const isNotHome = ['/learning-materials', '/relevant', '/reading-simulation', '/test-reading', '/test-understanding'].some((path) => pathname.startsWith(path));
+  const isNotHome = ['/learning-materials', '/relevant', '/reading-simulation', '/test-reading', '/test-understanding', '/home'].some((path) => pathname.startsWith(path));
   const isAdminPage = pathname.startsWith('/admin');
 
   return (
@@ -24,7 +24,7 @@ export const Header = ({ currentUser }: HeaderProps) => {
         ) : (
           <div className="block">
             <Link href="/" className="flex items-center gap-2">
-              {isNotHome ? <Image src="/logo/upi.png" alt="upi text" width={44} height={44} /> : <Image src="/logo/upi-text.png" alt="upi text" width={60} height={44} />}
+              {isNotHome ? <Image src="/logo/upi.png" alt="upi text" width={44} height={44} priority /> : <Image src="/logo/upi-text.png" priority alt="upi text" width={60} height={44} />}
               <Image src="/logo/logo2.png" alt="Logo 2" width={44} height={44} />
             </Link>
           </div>

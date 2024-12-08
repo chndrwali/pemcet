@@ -9,15 +9,11 @@ const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Candra Wali S | Portfolio',
-    template: '%s - Candra Wali S | Portfolio',
+    default: 'WEPCET | Web Pembaca Cepat',
+    template: '%s - WEPCET | Web Pembaca Cepat',
   },
-  description: 'Portfolio Candra Wali Sanjaya, seorang Front-End Developer profesional.',
-  category: 'Portfolio, Front-End Developer',
-  authors: [{ name: 'chndrwali' }],
-  keywords: ['Portfolio', 'Front-End Developer', 'Candra Wali', 'Web Development'],
-  creator: 'Candra Wali Sanjaya',
-  publisher: 'Candra Wali Sanjaya',
+  description: 'Sebuah Website Pembaca Cepat untuk anak kelas 5 SD.',
+  keywords: ['Website Pembaca Cepat', 'Front-End Developer', 'Candra Wali', 'Web Development'],
   twitter: {
     card: 'summary_large_image',
   },
