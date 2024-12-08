@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from 'tailwindcss';
-import { withUt } from 'uploadthing/tw';
 
 const config: Config = {
   darkMode: ['class'],
@@ -17,11 +16,7 @@ const config: Config = {
         shine: 'shine 8s ease-in-out infinite',
       },
       colors: {
-        gold: '#D9B16A',
-        lightblue: '#00B8D9',
-        blueCustom: '#27C0EF',
-        gradientblue: '#004680',
-        softblue: '#DDEEFF',
+        darkPurple: '#2d0131',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -76,4 +71,4 @@ const config: Config = {
   },
   plugins: [require('tailwindcss-animate')],
 };
-export default withUt(config);
+export default config;

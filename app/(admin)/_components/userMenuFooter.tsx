@@ -8,10 +8,9 @@ import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '
 import { useConfirm } from '@/hooks/use-confirm';
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { ChevronUp, User2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 
 export const UserMenuFooter = () => {
-  const { toast } = useToast();
   const [ConfirmDialog, confirm] = useConfirm('Apakah kamu yakin?', 'Anda akan keluar akun.');
   const user = useCurrentUser();
 
@@ -19,10 +18,7 @@ export const UserMenuFooter = () => {
     const ok = await confirm();
     if (ok) {
       logout();
-      toast({
-        variant: 'success',
-        description: 'Berhasil keluar',
-      });
+      toast.success('Berhasil keluar');
     }
   };
 

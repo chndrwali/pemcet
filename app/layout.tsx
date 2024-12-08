@@ -3,10 +3,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
-import { Toaster } from '@/components/ui/toaster';
-import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin';
-import { extractRouterConfig } from 'uploadthing/server';
-import { ourFileRouter } from '@/app/api/uploadthing/core';
+import { Toaster } from '@/components/ui/sonner';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -35,7 +32,6 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className={`${inter.className} antialiased`}>
           {children}
           <Toaster />
