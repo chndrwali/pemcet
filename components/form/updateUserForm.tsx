@@ -28,7 +28,6 @@ export const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
       name: currentUser?.name || '',
-      email: currentUser?.email || '',
     },
   });
 
@@ -36,7 +35,7 @@ export const UpdateUserForm = ({ currentUser }: UpdateUserFormProps) => {
     setIsLoading(true);
     startTransition(() => {
       axios
-        .put(`/api/users/${currentUser?.id}`, values)
+        .put(`/api/users`, values)
         .then(() => {
           toast.success('Profile berhasil di perbarui');
           setIsLoading(false);
