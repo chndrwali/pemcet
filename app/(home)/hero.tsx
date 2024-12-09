@@ -16,7 +16,7 @@ export const Hero = ({ currentUser }: HeroProps) => {
 
   return (
     <div className="flex flex-col items-center justify-center text-white">
-      <div className="absolute sm:hidden z-30 mb-20" style={{ backgroundImage: `url("/icon/light1.png")`, backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: '200px' }} />
+      <div className="absolute sm:hidden inset-0 z-30 mb-20" style={{ backgroundImage: `url("/icon/light1.png")`, backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: '200px' }} />
       <div className="flex flex-col text-center">
         <h1 className={`${caveat.className} text-5xl sm:text-9xl `}>WEPCET</h1>
         <h3 className={`${caveat.className} text-3xl sm:text-5xl `}>(WEB PEMBACA CEPAT)</h3>
