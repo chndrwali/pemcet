@@ -1,11 +1,22 @@
 import { Metadata } from 'next';
+import { Navigation } from './navigation';
+import { Caveat } from 'next/font/google';
+
+const caveat = Caveat({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: 'Home',
 };
 
 const HomePage = () => {
-  return <>Home</>;
+  return (
+    <section className="relative flex flex-col items-center justify-center z-20">
+      <div className="flex items-center justify-center text-center">
+        <h1 className={`${caveat.className} text-white text-5xl sm:text-9xl uppercase`}>Menu Utama</h1>
+      </div>
+      <Navigation />
+    </section>
+  );
 };
 
 export default HomePage;
