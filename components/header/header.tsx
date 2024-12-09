@@ -17,7 +17,7 @@ export const Header = ({ currentUser }: HeaderProps) => {
   const isAdminPage = pathname.startsWith('/admin');
 
   return (
-    <header className="sticky top-0 z-30 px-1 lg:px-4 w-full bg-transparent py-10 max-lg:py-4">
+    <header className="sticky top-0 z-50 px-3 lg:px-4 w-full bg-transparent py-10 max-lg:py-4">
       <div className="w-full flex items-center justify-between">
         {isAdminPage ? (
           <div />

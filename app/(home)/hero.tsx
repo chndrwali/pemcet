@@ -23,12 +23,12 @@ export const Hero = ({ currentUser }: HeroProps) => {
         <p className={`${caveat.className} text-lg`}>BACA DAN PAHAMI SELURUH INFORMASI NYA</p>
       </div>
 
-      <div className="mt-[70px]">
+      <div className="mt-[80px]">
         <button
           onClick={() => {
             router.push(currentUser ? '/home' : '/login');
           }}
-          className="bg-yellow-400 flex h-full w-full items-center justify-center rounded-full border-4 border-red-600 p-4 hover:bg-yellow-400/50 hover:border-red-500 outline outline-4 outline-pink-500 hover:outline-pink-600 transition-colors "
+          className="bg-yellow-400 z-50 flex h-full w-full items-center justify-center rounded-full border-4 border-red-600 p-4 hover:bg-yellow-400/50 hover:border-red-500 outline outline-4 outline-pink-500 hover:outline-pink-600 transition-colors "
         >
           <Image src="/icon/home.png" alt="home" width={30} height={30} />
         </button>
