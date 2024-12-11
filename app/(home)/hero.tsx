@@ -1,11 +1,11 @@
 'use client';
 
 import { SafeUser } from '@/types';
-import { Caveat } from 'next/font/google';
+import { Caveat_Brush } from 'next/font/google';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const caveat = Caveat({ subsets: ['latin'], weight: ['400', '700'] });
+const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
 
 interface HeroProps {
   currentUser: SafeUser | null;

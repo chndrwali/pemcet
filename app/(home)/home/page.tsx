@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { Navigation } from './navigation';
-import { Caveat } from 'next/font/google';
+import { Caveat_Brush } from 'next/font/google';
 
-const caveat = Caveat({ subsets: ['latin'], weight: ['400', '700'] });
+const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
   title: 'Home',
