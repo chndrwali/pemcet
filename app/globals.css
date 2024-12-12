@@ -110,3 +110,30 @@ body,
   border-color: transparent transparent transparent #1e3a8a; /* Warna panah */
   height: 0;
 }
+
+.custom-wrapper {
+  position: relative; /* Untuk positioning pseudo-elements relatif ke wrapper */
+  display: inline-block; /* Pastikan elemen tetap mengikuti ukuran kontennya */
+  z-index: 1; /* Wrapper di atas pseudo-elements */
+}
+
+.custom-wrapper::before,
+.custom-wrapper::after {
+  content: ''; /* Konten kosong untuk pseudo-elements */
+  position: absolute; /* Posisi absolut terhadap .custom-wrapper */
+  background-color: #a3bffa; /* Warna latar belakang pseudo-elements */
+  width: 40px; /* Lebar kotak */
+  height: 20px; /* Tinggi kotak */
+  border-radius: 4px; /* Sudut membulat */
+  z-index: 0; /* Letakkan di belakang elemen utama */
+}
+
+.custom-wrapper::before {
+  top: -4px; /* Pojok kiri atas */
+  left: -4px;
+}
+
+.custom-wrapper::after {
+  bottom: -4px;
+  right: -4px;
+}

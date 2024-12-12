@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Caveat } from 'next/font/google';
+import { Caveat_Brush } from 'next/font/google';
 
-const caveat = Caveat({ subsets: ['latin'], weight: ['400', '700'] });
+const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
 
 const route = [
   {
@@ -21,11 +21,11 @@ const route = [
   },
   {
     label: 'Tes Membaca',
-    link: 'test-reading',
+    link: '/test-reading',
   },
   {
     label: 'Uji Pemahaman',
-    link: 'test-understanding',
+    link: '/test-understanding',
   },
 ];
 
@@ -33,7 +33,7 @@ export const Navigation = () => {
   const router = useRouter();
 
   return (
-    <div className="grid grid-cols-2 md:flex md:items-center p-4 gap-4 place-items-center mt-20">
+    <div className="grid grid-cols-2 md:flex md:items-center p-4 gap-4 place-items-center mt-20 sm:mt-10">
       {route.map((item) => (
         <div
           key={item.label}
