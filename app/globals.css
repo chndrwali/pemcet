@@ -92,3 +92,21 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.arrow-box {
+  position: relative;
+  padding: 12px 16px;
+}
+
+.arrow-box::after {
+  content: '';
+  position: absolute;
+  top: 0; /* Letakkan panah di atas */
+  bottom: 0; /* Pastikan memenuhi tinggi penuh */
+  right: -20px; /* Perlebar jarak panah ke luar */
+  margin: auto; /* Pastikan panah tetap di tengah vertikal */
+  border-width: 16px 0 16px 20px; /* Lebar panah (vertikal dan horizontal) */
+  border-style: solid;
+  border-color: transparent transparent transparent #1e3a8a; /* Warna panah */
+  height: 0;
+}
