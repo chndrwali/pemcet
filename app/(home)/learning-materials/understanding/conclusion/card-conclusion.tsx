@@ -37,7 +37,7 @@ export const CardConclusion = () => {
         </div>
       </div>
       <ButtonNextPrevious onClick={() => router.back()} isLeft={true} />
-      <ButtonNextPrevious onClick={() => router.push('/benefit')} isLeft={false} />
+      <ButtonNextPrevious onClick={() => router.push('/learning-materials/benefit')} isLeft={false} />
     </>
   );
 };
