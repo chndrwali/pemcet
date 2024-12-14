@@ -5,11 +5,12 @@ import { FastReadingTest } from './reading-test';
 const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
 
 interface LevelPageProps {
-  params: { levelId: string };
+  params: Promise<{ levelId: string }>;
 }
 
 const LevelPage = async ({ params }: LevelPageProps) => {
-  const reading = await getTestReadingById(params.levelId);
+  const { levelId } = await params;
+  const reading = await getTestReadingById(levelId);
 
   if (!reading) return null;
 

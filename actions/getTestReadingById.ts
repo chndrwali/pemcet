@@ -6,7 +6,7 @@ export const getTestReadingById = async (levelId: string) => {
     const level = levelId as LevelReading;
     const testReading = await prisma.testReading.findUnique({
       where: {
-        level: level,
+        level,
       },
     });
 
