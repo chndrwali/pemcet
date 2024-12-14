@@ -112,7 +112,7 @@ export const FastReadingSimulation = () => {
         </div>
       </div>
       <ButtonNextPrevious onClick={() => router.back()} isLeft={true} />
-      <ButtonNextPrevious onClick={() => router.push('/test-reading')} isLeft={false} />
+      <ButtonNextPrevious onClick={() => router.push('/test-reading/Pemula')} isLeft={false} />
     </>
   );
 };

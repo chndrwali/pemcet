@@ -21,7 +21,7 @@ const route = [
   },
   {
     label: 'Tes Membaca',
-    link: '/test-reading',
+    link: '/test-reading/Pemula',
   },
   {
     label: 'Uji Pemahaman',

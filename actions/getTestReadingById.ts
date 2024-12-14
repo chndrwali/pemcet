@@ -1,11 +1,12 @@
 import { prisma } from '@/lib/db';
 import { LevelReading } from '@prisma/client';
 
-export const getTestReadingById = async (levelId: LevelReading) => {
+export const getTestReadingById = async (levelId: string) => {
   try {
+    const level = levelId as LevelReading;
     const testReading = await prisma.testReading.findUnique({
       where: {
-        level: levelId,
+        level: level,
       },
     });
 
