@@ -27,7 +27,7 @@ export const Hero = ({ currentUser }: HeroProps) => {
         <div className="absolute left-4">
           <Image src="/logo/murid-ngapung-1.png" alt="murid ngapung" width={100} height={100} />
         </div>
-        <div className="absolute right-4 top-0">
+        <div className="absolute right-4 top-52">
           <Image src="/logo/murid-ngapung-2.png" alt="murid ngapung" width={100} height={100} />
         </div>
         <button
