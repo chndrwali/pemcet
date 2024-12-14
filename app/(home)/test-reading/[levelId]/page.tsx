@@ -7,7 +7,8 @@ interface LevelPageProps {
 
 const LevelPage = async ({ params }: LevelPageProps) => {
   const reading = await getTestReadingById(params.levelId);
-  return <></>;
+
+  return <>{reading?.level}</>;
 };
 
 export default LevelPage;

@@ -55,12 +55,21 @@ export const FastReadingSimulation = () => {
       <div className="bg-blue-900 p-4 rounded-xl">
         <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
           {isRunning ? (
-            <div>
+            <div className="max-w-[300px] md:max-w-full">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">
                 Pemanasan Mata - <span className="text-purple-600"> {timeLeft} Detik </span>
               </h2>
-              <div ref={textRef} className="overflow-hidden whitespace-nowrap bg-gray-100 border border-gray-200 p-4 rounded-lg" style={{ width: '100%', height: '80px', position: 'relative' }}>
+              <div
+                ref={textRef}
+                className="simulation-container overflow-hidden whitespace-nowrap bg-gray-100 border border-gray-200 p-4 rounded-lg"
+                style={{
+                  width: '100%',
+                  maxWidth: '400px', // Membatasi lebar maksimal
+                  height: '80px',
+                }}
+              >
                 <span
+                  className="scrollable-text"
                   style={{
                     display: 'inline-block',
                     whiteSpace: 'nowrap',

@@ -137,3 +137,14 @@ body,
   bottom: -4px;
   right: -4px;
 }
+
+@media (max-width: 768px) {
+  .simulation-container {
+    font-size: 0.875rem; /* Mengurangi ukuran font untuk layar kecil */
+    padding: 1rem; /* Menambah padding agar lebih nyaman */
+  }
+
+  .scrollable-text {
+    height: 60px; /* Sesuaikan tinggi elemen scroll */
+  }
+}
