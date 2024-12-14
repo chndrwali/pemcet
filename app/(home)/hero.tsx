@@ -16,18 +16,18 @@ export const Hero = ({ currentUser }: HeroProps) => {
 
   return (
     <div className="flex flex-col items-center justify-center text-white">
-      <div className="absolute sm:hidden inset-0 z-30  pb-20" style={{ backgroundImage: `url("/icon/light1.png")`, backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: '300px' }} />
+      <div className="absolute sm:hidden inset-0 z-30  pb-20" style={{ backgroundImage: `url("/icon/light1.png")`, backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: '250px' }} />
       <div className="flex flex-col text-center">
         <h1 className={`${caveat.className} text-5xl sm:text-9xl `}>WEPCET</h1>
         <h3 className={`${caveat.className} text-3xl sm:text-5xl `}>(WEB PEMBACA CEPAT)</h3>
         <p className={`${caveat.className} text-lg`}>BACA DAN PAHAMI SELURUH INFORMASI NYA</p>
       </div>
 
-      <div className="mt-[200px]">
+      <div className="mt-[150px]">
         <div className="absolute left-4">
           <Image src="/logo/murid-ngapung-1.png" alt="murid ngapung" width={100} height={100} />
         </div>
-        <div className="absolute right-4">
+        <div className="absolute right-4 top-0">
           <Image src="/logo/murid-ngapung-2.png" alt="murid ngapung" width={100} height={100} />
         </div>
         <button

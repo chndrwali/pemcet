@@ -10,7 +10,7 @@ export default async function Home() {
       <Hero currentUser={currentUser} />
       <Bottom />
       <div
-        className="absolute sm:hidden -bottom-96 z-20 "
+        className="absolute sm:hidden -bottom-72 z-20 "
         style={{
           backgroundImage: `url("/icon/light-2.png")`,
           backgroundPosition: 'center',
@@ -21,7 +21,7 @@ export default async function Home() {
         }}
       />
       <div
-        className="absolute sm:hidden -bottom-[360px] z-30 "
+        className="absolute sm:hidden -bottom-72 z-30 "
         style={{
           backgroundImage: `url("/icon/people.png")`,
           backgroundPosition: 'center',
