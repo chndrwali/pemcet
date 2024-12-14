@@ -37,7 +37,7 @@ export const AddReadingForm = ({ testReading }: AddReadingFormProps) => {
   const onSubmit = (value: z.infer<typeof testReadingSchema>) => {
     setIsLoading(true);
 
-    const apiUrl = testReading ? `/api/admin/test-reading/${testReading.level}` : '/api/admin/test-reading';
+    const apiUrl = testReading ? `/api/admin/test-reading/patch` : '/api/admin/test-reading';
     const apiMethod = testReading ? axios.patch : axios.post;
 
     apiMethod(apiUrl, value)

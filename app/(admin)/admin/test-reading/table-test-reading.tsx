@@ -37,7 +37,7 @@ export const TableTestReading = ({ testReading }: TableTestReadingProps) => {
     if (ok) {
       setIsLoadingId(testReading.level);
       axios
-        .delete(`/api/admin/test-reading/${testReading.level}`)
+        .delete(`/api/admin/test-reading/delete`)
         .then(() => {
           setRows((prevRows) => prevRows.filter((row) => row.level !== testReading.level)); // Update rows
           toast.success('Berhasil hapus item');
