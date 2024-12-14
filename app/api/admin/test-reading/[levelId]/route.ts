@@ -5,8 +5,13 @@ import { getCurrentUser } from '@/actions/getCurrentUser';
 import { NextResponse } from 'next/server';
 import { LevelReading } from '@prisma/client';
 
-export async function PATCH(request: Request, { params }: { params: { levelId: LevelReading } }) {
+export async function PATCH(request: Request, { params }: { params: { levelId: string } }) {
   const { levelId } = await params;
+
+  if (!Object.values(LevelReading).includes(levelId as LevelReading)) {
+    return NextResponse.json({ error: `Invalid levelId: ${levelId}` }, { status: 400 });
+  }
+
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -29,7 +34,7 @@ export async function PATCH(request: Request, { params }: { params: { levelId: L
 
   try {
     const updatedTest = await prisma.testReading.update({
-      where: { level: levelId },
+      where: { level: levelId as LevelReading },
       data: {
         title,
         story,
@@ -50,9 +55,12 @@ export async function PATCH(request: Request, { params }: { params: { levelId: L
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { levelId: LevelReading } }) {
+export async function DELETE(request: Request, { params }: { params: { levelId: string } }) {
   const { levelId } = await params;
 
+  if (!Object.values(LevelReading).includes(levelId as LevelReading)) {
+    return NextResponse.json({ error: `Invalid levelId: ${levelId}` }, { status: 400 });
+  }
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -72,7 +80,7 @@ export async function DELETE(request: Request, { params }: { params: { levelId: 
 
   try {
     const deleteAnnouncement = await prisma.testReading.delete({
-      where: { level: levelId },
+      where: { level: levelId as LevelReading },
     });
 
     return NextResponse.json(deleteAnnouncement, { status: 201 });
