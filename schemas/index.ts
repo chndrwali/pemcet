@@ -41,3 +41,16 @@ export const updateUserSchema = z.object({
     message: 'Nama harus diisi',
   }),
 });
+
+export const testReadingSchema = z.object({
+  level: z.enum(['Pemula', 'Menengah', 'Lanjutan']).default('Pemula'),
+  title: z.string().min(1, {
+    message: 'Judul harus diisi!',
+  }),
+  time: z.coerce.number().min(1, {
+    message: 'Waktu harus diisi!',
+  }),
+  story: z.string().min(1, {
+    message: 'deskripsi harus diisi',
+  }),
+});
