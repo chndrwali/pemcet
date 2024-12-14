@@ -12,3 +12,9 @@
 // };
 
 // export default LevelPage;
+
+const LevelPage = () => {
+  return <></>;
+};
+
+export default LevelPage;
