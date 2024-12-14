@@ -9,7 +9,6 @@ export const Footer = () => {
   const pathname = usePathname();
 
   const isNotHome = ['/learning-materials', '/relevant', '/reading-simulation', '/test-reading', '/test-understanding', '/home'].some((path) => pathname.startsWith(path));
-  if (isNotHome) return null;
 
   return (
     <footer className="fixed w-full bottom-0 bg-[#F1E0CC] p-4 sm:p-6">
