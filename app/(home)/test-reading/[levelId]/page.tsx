@@ -1,14 +1,14 @@
-import { getTestReadingById } from '@/actions/getTestReadingById';
-import { LevelReading } from '@prisma/client';
+// import { getTestReadingById } from '@/actions/getTestReadingById';
+// import { LevelReading } from '@prisma/client';
 
-interface LevelPageProps {
-  params: { levelId: LevelReading };
-}
+// interface LevelPageProps {
+//   params: { levelId: LevelReading };
+// }
 
-const LevelPage = async ({ params }: LevelPageProps) => {
-  const reading = await getTestReadingById(params.levelId);
+// const LevelPage = async ({ params }: LevelPageProps) => {
+//   const reading = await getTestReadingById(params.levelId);
 
-  return <>{reading?.level}</>;
-};
+//   return <>{reading?.level}</>;
+// };
 
-export default LevelPage;
+// export default LevelPage;
