@@ -54,3 +54,17 @@ export const testReadingSchema = z.object({
     message: 'deskripsi harus diisi',
   }),
 });
+
+const questionSchema = z.object({
+  questionText: z.string().min(1, 'Question text is required'),
+  optionA: z.string().min(1, 'Option A is required'),
+  optionB: z.string().min(1, 'Option B is required'),
+  optionC: z.string().min(1, 'Option C is required'),
+  optionD: z.string().min(1, 'Option D is required'),
+  correctAnswer: z.enum(['A', 'B', 'C', 'D']).optional(),
+});
+
+export const examSchema = z.object({
+  level: z.enum(['Pemula', 'Menengah', 'Lanjutan']).default('Pemula'),
+  questions: z.array(questionSchema).min(1).max(5),
+});

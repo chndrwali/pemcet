@@ -25,7 +25,7 @@ const route = [
   },
   {
     label: 'Uji Pemahaman',
-    link: '/test-understanding',
+    link: '/test-understanding/Pemula',
   },
 ];
 

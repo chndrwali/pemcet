@@ -20,6 +20,7 @@ model User {
   // Optional for WebAuthn support
   Authenticator Authenticator[]
   TestReading TestReading[]
+  ExamResult ExamResult[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -97,6 +98,49 @@ model TestReading {
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Exam {
+  level          LevelReading     @id 
+  questions   Question[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  ExamResult ExamResult[]
+}
+
+model Question {
+  id             String   @id @default(uuid())
+  exam           Exam     @relation(fields: [examId], references: [level], onDelete: Cascade)
+  examId         LevelReading
+  questionText   String
+  optionA        String
+  optionB        String
+  optionC        String
+  optionD        String
+  correctAnswer  CorrrectAnswer?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([examId])
+}
+
+model ExamResult {
+  id         String    @id @default(uuid())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  exam       Exam      @relation(fields: [examId], references: [level])
+  examId     LevelReading
+  answers    Json      // Store the answers as JSON, e.g., { "Q1": "A", "Q2": "C" }
+  score      Int
+  submittedAt DateTime @default(now())
+}
+
+enum CorrrectAnswer {
+  A
+  B
+  C
+  D
 }
 
 enum LevelReading {

@@ -50,7 +50,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <DropdownMenuSeparator />
 
           {currentUser?.role === 'ADMIN' && (
-            <Link href="/admin">
+            <Link href="/admin/users">
               <DropdownMenuItem>Dashboard</DropdownMenuItem>
             </Link>
           )}

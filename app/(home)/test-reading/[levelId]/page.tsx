@@ -1,6 +1,11 @@
 import { getTestReadingById } from '@/actions/getTestReadingById';
 import { Caveat_Brush } from 'next/font/google';
 import { FastReadingTest } from './reading-test';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Test Membaca',
+};
 
 const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
 
