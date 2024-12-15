@@ -3,7 +3,7 @@ import { LoginForm } from '@/components/auth/loginForm';
 
 export default function LoginPage() {
   return (
-    <CardWrapper headerLabel="Selamat datang, Tuan Muda 😁" backButtonHref="/register" backButtonLabel="Tidak punya akun?">
+    <CardWrapper headerLabel="Masuk" headerDescription="Gunakan email dan password untuk masuk" backButtonHref="/register" backButtonLabel="Tidak punya akun?">
       <LoginForm />
     </CardWrapper>
   );
