@@ -127,9 +127,9 @@ model Question {
 
 model ExamResult {
   id         String    @id @default(uuid())
-  user       User      @relation(fields: [userId], references: [id])
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
-  exam       Exam      @relation(fields: [examId], references: [level])
+  exam       Exam      @relation(fields: [examId], references: [level], onDelete: Cascade)
   examId     LevelReading
   answers    Json      // Store the answers as JSON, e.g., { "Q1": "A", "Q2": "C" }
   score      Int

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
   try {
     const deleteTest = await prisma.exam.delete({
-      where: { level: level },
+      where: { level },
     });
 
     return NextResponse.json(deleteTest, { status: 201 });
