@@ -12,12 +12,12 @@ const route = [
   {
     label: 'Latihan Membaca Cepat',
     icon: '/icon/2.png',
-    link: '/learning-materials/benefit',
+    link: '/latihan-membaca',
   },
   {
     label: 'Tes Membaca Cepat',
     icon: '/icon/4.png',
-    link: '/learning-materials/basic-principles',
+    link: '/test-membaca',
   },
   {
     label: 'Latihan Meningkatkan Membaca Cepat',

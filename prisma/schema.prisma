@@ -136,6 +136,15 @@ model ExamResult {
   submittedAt DateTime @default(now())
 }
 
+model QuizResult {
+  id String @id @default(uuid())
+  name String
+  class Int
+  count Int
+  quiz Int
+  submittedAt DateTime @default(now())
+}
+
 enum CorrrectAnswer {
   A
   B

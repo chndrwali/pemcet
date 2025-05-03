@@ -1,14 +1,11 @@
-import { getCurrentUser } from '@/actions/getCurrentUser';
 import { Header } from '@/components/header/header';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Page = async () => {
-  const currentUser = await getCurrentUser();
-
   return (
     <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-doa z-20">
-      <Header currentUser={currentUser} />
+      <Header />
       <div
         style={{
           backgroundColor: '#442412',

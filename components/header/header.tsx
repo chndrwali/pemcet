@@ -7,7 +7,8 @@ import { usePathname } from 'next/navigation';
 export const Header = () => {
   const pathname = usePathname();
 
-  const isNotHome = ['/learning-materials', '/relevant', '/reading-simulation', '/test-reading', '/test-understanding', '/home', '/doa'].some((path) => pathname.startsWith(path));
+  const isNotHome = ['/learning-materials', '/relevant', '/latihan-membaca', '/test-membaca', '/test-understanding', '/games', '/doa'].some((path) => pathname.startsWith(path));
+  const isNotMaterials = ['/learning-materials', '/latihan-membaca', 'test-membaca'].some((path) => pathname.startsWith(path));
   const isAdminPage = pathname.startsWith('/admin');
 
   return (
@@ -27,7 +28,7 @@ export const Header = () => {
           {!isNotHome && <Image src="/logo/logo2.png" alt="Logo 2" width={44} height={44} />}
           {isNotHome && (
             <Link
-              href={pathname === '/learning-materials' ? '/' : pathname.startsWith('/learning-materials') ? '/learning-materials' : '/'}
+              href={isNotMaterials ? '/learning-materials' : '/'}
               style={{
                 backgroundColor: '#fff',
                 border: '2px solid #4b7bec',

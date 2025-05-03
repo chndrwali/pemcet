@@ -68,3 +68,10 @@ export const examSchema = z.object({
   level: z.enum(['Pemula', 'Menengah', 'Lanjutan']).default('Pemula'),
   questions: z.array(questionSchema).min(1).max(5),
 });
+
+export const quizSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  class: z.coerce.number().min(1, 'Class is required'),
+  count: z.coerce.number().min(1),
+  quiz: z.coerce.number().min(1),
+});
