@@ -1,0 +1,31 @@
+'use server';
+
+import { prisma } from '@/lib/db';
+import { quizSchema } from '@/schemas';
+import { revalidatePath } from 'next/cache';
+import { z } from 'zod';
+
+export const postQuiz = async (data: z.infer<typeof quizSchema>) => {
+  try {
+    // Validate the data
+    const validatedData = quizSchema.parse(data);
+
+    // Save to database
+    const result = await prisma.quizResult.create({
+      data: {
+        name: validatedData.name,
+        class: validatedData.class,
+        count: validatedData.count,
+        quiz: validatedData.quiz,
+      },
+    });
+
+    // Revalidate the path to update any cached data
+    revalidatePath('/');
+
+    return { success: true, data: result };
+  } catch (error) {
+    console.error('Failed to save quiz result:', error);
+    return { success: false, error: 'Failed to save quiz result' };
+  }
+};

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { z } from 'zod';
+import { postQuiz } from '@/actions/postQuiz';
 
 const Page = () => {
   const [waktu, setWaktu] = useState(0);
@@ -15,6 +16,7 @@ const Page = () => {
   const [step, setStep] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
   const [score, setScore] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const teksPerBaris = [
     'JUDUL: Rahasia Danau Biru',
@@ -124,10 +126,37 @@ const Page = () => {
     return totalScore;
   };
 
-  const onSubmit = (data: z.infer<typeof quizSchema>) => {
+  const onSubmit = async (data: z.infer<typeof quizSchema>) => {
+    setIsSubmitting(true);
     const finalScore = calculateScore();
-    console.log('Data terkumpul:', { ...data, quiz: finalScore });
-    setStep(6);
+    const formData = {
+      ...data,
+      quiz: finalScore,
+    };
+
+    try {
+      const result = await postQuiz(formData);
+      if (result.success) {
+        console.log('Data berhasil disimpan:', result.data);
+        setStep(6);
+      } else {
+        console.error('Gagal menyimpan data:', result.error);
+        alert('Gagal menyimpan data. Silakan coba lagi.');
+      }
+    } catch (error) {
+      console.error('Error saat menyimpan data:', error);
+      alert('Terjadi kesalahan. Silakan coba lagi.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleFinishQuiz = () => {
+    // Calculate the score before submitting
+    calculateScore();
+
+    // Manually trigger form submission
+    handleSubmit(onSubmit)();
   };
 
   const nextStep = async () => {
@@ -533,8 +562,9 @@ const Page = () => {
               </div>
               <div style={{ textAlign: 'center', marginTop: '20px' }}>
                 <button
-                  type="submit" // Changed from submit to button
-                  //   onClick={handleFinishQuiz} // Added click handler
+                  type="button"
+                  onClick={handleFinishQuiz}
+                  disabled={isSubmitting}
                   style={{
                     backgroundColor: '#5b2c0f',
                     color: 'white',
@@ -544,9 +574,10 @@ const Page = () => {
                     borderRadius: '12px',
                     cursor: 'pointer',
                     boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                    opacity: isSubmitting ? 0.7 : 1,
                   }}
                 >
-                  Selesai
+                  {isSubmitting ? 'Menyimpan...' : 'Selesai'}
                 </button>
               </div>
             </>
