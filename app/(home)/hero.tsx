@@ -2,7 +2,6 @@
 
 import { SafeUser } from '@/types';
 import { Caveat_Brush } from 'next/font/google';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
@@ -15,28 +14,32 @@ export const Hero = ({ currentUser }: HeroProps) => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center justify-center text-white">
-      <div className="absolute sm:hidden inset-0 z-30  pb-20" style={{ backgroundImage: `url("/icon/light1.png")`, backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: '250px' }} />
+    <div className="mt-[200px] sm:mt-0 flex flex-col items-center justify-center text-white">
       <div className="flex flex-col text-center">
         <h1 className={`${caveat.className} text-5xl sm:text-9xl `}>WEPCET</h1>
         <h3 className={`${caveat.className} text-3xl sm:text-5xl `}>(WEB PEMBACA CEPAT)</h3>
-        <p className={`${caveat.className} text-lg`}>BACA DAN PAHAMI SELURUH INFORMASI NYA</p>
       </div>
 
-      <div className="mt-[150px]">
-        <div className="absolute left-4">
-          <Image src="/logo/murid-ngapung-1.png" alt="murid ngapung" width={100} height={100} />
-        </div>
-        <div className="absolute right-4 top-52">
-          <Image src="/logo/murid-ngapung-2.png" alt="murid ngapung" width={100} height={100} />
-        </div>
+      <div className="mt-[20px]">
         <button
           onClick={() => {
-            router.push(currentUser ? '/home' : '/login');
+            router.push(currentUser ? '/doa' : '/login');
           }}
-          className="bg-yellow-400 z-50 flex h-full w-full items-center justify-center rounded-full border-4 border-red-600 p-4 hover:bg-yellow-400/50 hover:border-red-500 outline outline-4 outline-pink-500 hover:outline-pink-600 transition-colors "
+          style={{
+            display: 'inline-block',
+            marginTop: '20px',
+            backgroundColor: '#fff',
+            border: '6px solid #5b3923',
+            color: '#5b3923',
+            fontWeight: 'bold',
+            fontSize: '24px',
+            padding: '10px 30px',
+            borderRadius: '12px',
+            textDecoration: 'none',
+            boxShadow: '2px 4px 10px rgba(0,0,0,0.2)',
+          }}
         >
-          <Image src="/icon/home.png" alt="home" width={30} height={30} />
+          Mulai
         </button>
       </div>
     </div>

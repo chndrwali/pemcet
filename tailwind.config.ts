@@ -66,7 +66,9 @@ const config: Config = {
       backgroundImage: {
         shape: 'url(/Shape.png)',
         wave: 'url(/wave.svg)',
-        ungu: 'url(/logo/bg-primary.png)',
+        desa: 'url(/bg-desa.jpg)',
+        doa: 'url(/bg-doa.jpg)',
+        deskripsi: 'url(/bg-deskripsi.jpg)',
       },
     },
   },
