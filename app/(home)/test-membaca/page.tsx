@@ -6,36 +6,38 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { z } from 'zod';
+import type { z } from 'zod';
 
 const Page = () => {
   const [waktu, setWaktu] = useState(0);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
   const [barisAktif, setBarisAktif] = useState(0);
   const [step, setStep] = useState(1);
+  const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
+  const [score, setScore] = useState(0);
 
   const teksPerBaris = [
-    'JUDUL: Manfaat Membaca Buku',
-    'Membaca buku adalah kegiatan yang sangat bermanfaat.',
-    'Dengan membaca, kita bisa mendapatkan banyak ilmu dan wawasan baru.',
-    'Selain itu, membaca juga melatih otak agar lebih aktif berpikir.',
-    'Salah satu manfaat membaca adalah menambah kosakata.',
-    'Semakin banyak kata yang kita baca, semakin kaya bahasa yang kita kuasai.',
-    'Ini membantu kita berbicara dan menulis dengan lebih baik.',
-    'Selain itu, membaca juga bisa meningkatkan konsentrasi.',
-    'Saat membaca, kita harus fokus agar memahami isi bacaan.',
-    'Ini melatih otak untuk lebih berkonsentrasi dalam berbagai aktivitas.',
-    'Membaca juga bisa menjadi hiburan yang menyenangkan.',
-    'Ada banyak jenis buku yang bisa dipilih, seperti cerita petualangan, dongeng, atau buku komik.',
-    'Dengan membaca, kita bisa berimajinasi dan masuk ke dunia cerita yang menarik.',
-    'Tidak hanya itu, membaca juga bisa membantu meningkatkan daya ingat.',
-    'Saat membaca, kita mengingat banyak informasi, seperti nama tokoh, alur cerita, dan fakta penting.',
-    'Ini membantu melatih memori kita.',
-    'Agar membaca lebih menyenangkan, pilihlah buku yang sesuai dengan minat kita.',
-    'Bacalah di tempat yang nyaman dan hindari gangguan.',
-    'Jika kita membaca secara rutin, lama-lama akan menjadi kebiasaan yang bermanfaat.',
-    'Jadi, mari biasakan membaca setiap hari.',
-    'Dengan membaca, kita bisa menjadi lebih cerdas, kreatif, dan memiliki banyak pengetahuan.',
+    'JUDUL: Rahasia Danau Biru',
+    'Di sebuah desa kecil yang dikelilingi pegunungan hijau, terdapat danau berwarna biru yang jernih dan tenang.',
+    'Penduduk desa menyebutnya Danau Biru dan percaya bahwa danau itu menyimpan rahasia besar.',
+    'Konon, di dasar danau tersembunyi tongkat ajaib yang bisa membawa keberuntungan bagi siapa pun yang menemukannya.',
+    'Seorang anak bernama Bima tinggal di desa itu bersama keluarganya.',
+    'Bima dikenal sebagai anak yang penasaran dan suka bertanya.',
+    'Ia sering mendengar cerita tentang tongkat ajaib dari para orang tua di desa.',
+    'Bima mulai berpikir, apakah benar tongkat itu ada? Dan jika ada, seperti apa bentuknya?',
+    'Setiap sore, Bima duduk di tepi danau, mengamati airnya yang tenang dan biru.',
+    'Ia percaya, suatu hari ia bisa menemukan tongkat itu dan membantu desanya menjadi makmur kembali.',
+    'Bagi Bima, Danau Biru bukan hanya tempat yang indah, tapi juga penuh misteri dan harapan.',
+    'Ia tidak pernah bosan menatap danau itu, berharap bisa menemukan sesuatu yang luar biasa.',
+    'Hari demi hari berlalu, namun Bima tetap sabar dan penuh semangat.',
+    'Ia percaya bahwa rasa ingin tahu adalah awal dari penemuan besar.',
+    'Penduduk desa pun mulai melihat kesungguhan Bima.',
+    'Beberapa mulai membantu dengan memberi cerita-cerita lama tentang danau itu.',
+    'Bima semakin yakin bahwa tongkat itu bukan sekadar dongeng.',
+    'Jika tongkat itu benar-benar ada, mungkin itu bisa membawa desa mereka kembali sejahtera seperti dulu.',
+    'Danau Biru pun menjadi saksi dari mimpi dan semangat seorang anak yang tak pernah menyerah.',
+    'Apakah Bima akan menemukan tongkat ajaib itu? Cerita ini belum berakhir…',
+    'Tapi satu hal yang pasti: keberanian dan rasa ingin tahu adalah kekuatan sejati.',
   ];
 
   const durasiPerBaris = (30 * 1000) / teksPerBaris.length;
@@ -53,13 +55,13 @@ const Page = () => {
   // Ganti baris teks otomatis saat latihan dimulai
   useEffect(() => {
     let teksTimer: ReturnType<typeof setInterval>;
-    if (mulai && barisAktif < teksPerBaris.length - 1) {
+    if (mulai) {
       teksTimer = setInterval(() => {
-        setBarisAktif((prev) => prev + 1);
+        setBarisAktif((prev) => prev + (1 % teksPerBaris.length));
       }, durasiPerBaris);
     }
     return () => clearInterval(teksTimer);
-  }, [mulai, barisAktif, durasiPerBaris, teksPerBaris.length]);
+  }, [mulai, durasiPerBaris, teksPerBaris.length]);
 
   const handleSelesaiMembaca = () => {
     setMulai(false);
@@ -87,13 +89,45 @@ const Page = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     trigger,
+    getValues,
     formState: { errors },
   } = form;
 
+  const handleAnswerSelect = (questionNumber: number, answer: string) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionNumber.toString()]: answer,
+    }));
+  };
+
+  const calculateScore = () => {
+    // Correct answers for each question (1-indexed)
+    const correctAnswers: Record<string, string> = {
+      '1': 'C', // Bima
+      '2': 'B', // Siapa pun yang menemukannya akan mendapat keberuntungan
+      '3': 'B', // Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan
+      '4': 'C', // Ia duduk di tepi danau dan mengamati dengan sabar setiap sore
+      '5': 'C', // Kehidupan desa bisa kembali makmur seperti dulu
+    };
+
+    let totalScore = 0;
+    Object.entries(selectedAnswers).forEach(([question, answer]) => {
+      if (correctAnswers[question] === answer) {
+        totalScore += 20;
+      }
+    });
+
+    setScore(totalScore);
+    setValue('quiz', totalScore);
+    return totalScore;
+  };
+
   const onSubmit = (data: z.infer<typeof quizSchema>) => {
-    console.log('Data terkumpul:', data);
-    alert('Form berhasil dikirim!');
+    const finalScore = calculateScore();
+    console.log('Data terkumpul:', { ...data, quiz: finalScore });
+    setStep(6);
   };
 
   const nextStep = async () => {
@@ -189,6 +223,8 @@ const Page = () => {
                   {errors.class && <p className="text-red-500 text-sm">{errors.class.message}</p>}
                 </div>
               </div>
+              <input type="hidden" {...register('quiz')} />
+              <input type="hidden" {...register('count')} />
 
               {/* Tombol Mulai */}
               <div>
@@ -231,7 +267,7 @@ const Page = () => {
               >
                 <p>Tes waktunya dimulai sekarang! ⏱️</p>
                 <p>Di bagian ini, kamu akan diuji untuk melihat seberapa cepat dan seberapa baik kamu bisa membaca dan memahami bacaan. Saat kamu mulai membaca, waktu akan berjalan otomatis. Jadi, pastikan kamu fokus sejak awal ya!</p>
-                <p>Kalau kamu sudah selesai membaca, jangan lupa tekan tombol “Selesai Membaca” supaya waktunya berhenti.</p>
+                <p>Kalau kamu sudah selesai membaca, jangan lupa tekan tombol &quot;Selesai Membaca&quot; supaya waktunya berhenti.</p>
                 <p>
                   Setelah itu, kamu akan menjawab beberapa pertanyaan tentang isi bacaan. Tenang saja, ini bukan ujian yang menakutkan, kok! Ini hanya untuk melihat seberapa besar kemampuanmu berkembang. 📌 Yuk, ambil posisi yang nyaman,
                   tarik napas dalam-dalam... dan mulai membaca sekarang! 💡
@@ -322,6 +358,308 @@ const Page = () => {
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
               </button>
             </>
+          )}
+
+          {step === 4 && (
+            <>
+              <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                <h2
+                  style={{
+                    backgroundColor: '#fff',
+                    padding: '10px 40px',
+                    border: '8px solid #4b2e13',
+                    borderRadius: '15px',
+                    display: 'inline-block',
+                    color: '#4b2e13',
+                  }}
+                >
+                  Soal Untuk mengukur Pemahaman
+                </h2>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: '#fff',
+                  border: '5px solid #5b2c0f',
+                  borderRadius: '18px',
+                  padding: '30px',
+                  maxWidth: '900px',
+                  margin: '0 auto',
+                  fontSize: '18px',
+                  lineHeight: '1.6',
+                }}
+              >
+                <ol>
+                  <li>
+                    <strong>Siapakah tokoh utama dalam cerita &quot;Rahasia Danau Biru&quot;?</strong>
+                    <div className="mt-2">
+                      {['A', 'B', 'C', 'D'].map((option) => (
+                        <div
+                          key={`1-${option}`}
+                          className={`flex items-center p-2 rounded-lg cursor-pointer mb-1 ${selectedAnswers['1'] === option ? 'bg-amber-100 border border-amber-500' : 'hover:bg-gray-100'}`}
+                          onClick={() => handleAnswerSelect(1, option)}
+                        >
+                          <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['1'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
+                          <span>
+                            {option === 'A' && 'Penjaga hutan'}
+                            {option === 'B' && 'Penduduk desa'}
+                            {option === 'C' && 'Bima'}
+                            {option === 'D' && 'Ikan-ikan di danau'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </li>
+                  <br />
+                  <li>
+                    <strong>Apa yang diyakini oleh penduduk desa tentang tongkat ajaib?</strong>
+                    <div className="mt-2">
+                      {['A', 'B', 'C', 'D'].map((option) => (
+                        <div
+                          key={`2-${option}`}
+                          className={`flex items-center p-2 rounded-lg cursor-pointer mb-1 ${selectedAnswers['2'] === option ? 'bg-amber-100 border border-amber-500' : 'hover:bg-gray-100'}`}
+                          onClick={() => handleAnswerSelect(2, option)}
+                        >
+                          <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['2'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
+                          <span>
+                            {option === 'A' && 'Tongkat itu bisa mengobati penyakit'}
+                            {option === 'B' && 'Siapa pun yang menemukannya akan mendapat keberuntungan'}
+                            {option === 'C' && 'Tongkat itu bisa memanggil hujan'}
+                            {option === 'D' && 'Tongkat itu bisa membuat danau menjadi besar'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </li>
+                  <br />
+                  <li>
+                    <strong>Mengapa Bima merasa penasaran terhadap legenda Danau Biru?</strong>
+                    <div className="mt-2">
+                      {['A', 'B', 'C', 'D'].map((option) => (
+                        <div
+                          key={`3-${option}`}
+                          className={`flex items-center p-2 rounded-lg cursor-pointer mb-1 ${selectedAnswers['3'] === option ? 'bg-amber-100 border border-amber-500' : 'hover:bg-gray-100'}`}
+                          onClick={() => handleAnswerSelect(3, option)}
+                        >
+                          <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['3'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
+                          <span>
+                            {option === 'A' && 'Karena ia ingin menjadi penjaga danau'}
+                            {option === 'B' && 'Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan'}
+                            {option === 'C' && 'Karena ia takut danau akan hilang'}
+                            {option === 'D' && 'Karena ia ingin bermain di danau setiap hari'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </li>
+                </ol>
+              </div>
+              <button onClick={nextStep} type="button" className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
+                <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
+              </button>
+            </>
+          )}
+          {step === 5 && (
+            <>
+              <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <h2
+                  style={{
+                    backgroundColor: '#512e14',
+                    color: 'white',
+                    padding: '15px 30px',
+                    display: 'inline-block',
+                    borderRadius: '15px',
+                    fontSize: '26px',
+                  }}
+                >
+                  Soal Untuk Mengukur Pemahaman
+                </h2>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: '#fff',
+                  border: '6px solid #512e14',
+                  borderRadius: '20px',
+                  padding: '30px',
+                  maxWidth: '900px',
+                  margin: '30px auto',
+                  fontSize: '18px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+                }}
+              >
+                {/* Soal 4 */}
+                <div style={{ marginBottom: '25px' }}>
+                  <p style={{ fontWeight: 'bold' }}>4. Bagaimana cara Bima menunjukkan rasa ingin tahunya terhadap tongkat ajaib?</p>
+                  <div className="mt-2">
+                    {['A', 'B', 'C', 'D'].map((option) => (
+                      <div
+                        key={`4-${option}`}
+                        className={`flex items-center p-2 rounded-lg cursor-pointer mb-1 ${selectedAnswers['4'] === option ? 'bg-amber-100 border border-amber-500' : 'hover:bg-gray-100'}`}
+                        onClick={() => handleAnswerSelect(4, option)}
+                      >
+                        <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['4'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
+                        <span>
+                          {option === 'A' && 'Ia menyelam langsung ke danau'}
+                          {option === 'B' && 'Ia bertanya kepada penjaga danau'}
+                          {option === 'C' && 'Ia duduk di tepi danau dan mengamati dengan sabar setiap sore'}
+                          {option === 'D' && 'Ia mengajak teman-temannya bermain di sekitar danau'}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p style={{ fontWeight: 'bold' }}>5. Apa kemungkinan yang bisa terjadi jika Bima benar-benar menemukan tongkat ajaib tersebut?</p>
+                  <div className="mt-2">
+                    {['A', 'B', 'C', 'D'].map((option) => (
+                      <div
+                        key={`5-${option}`}
+                        className={`flex items-center p-2 rounded-lg cursor-pointer mb-1 ${selectedAnswers['5'] === option ? 'bg-amber-100 border border-amber-500' : 'hover:bg-gray-100'}`}
+                        onClick={() => handleAnswerSelect(5, option)}
+                      >
+                        <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['5'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
+                        <span>
+                          {option === 'A' && 'Danau akan mengering'}
+                          {option === 'B' && 'Desa akan dihantui oleh penjaga danau'}
+                          {option === 'C' && 'Kehidupan desa bisa kembali makmur seperti dulu'}
+                          {option === 'D' && 'Bima akan pindah dari desa'}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <button
+                  type="submit" // Changed from submit to button
+                  //   onClick={handleFinishQuiz} // Added click handler
+                  style={{
+                    backgroundColor: '#5b2c0f',
+                    color: 'white',
+                    padding: '10px 40px',
+                    fontSize: '20px',
+                    border: 'none',
+                    borderRadius: '12px',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                  }}
+                >
+                  Selesai
+                </button>
+              </div>
+            </>
+          )}
+
+          {step === 6 && (
+            <div
+              style={{
+                backgroundColor: '#fff',
+                border: '8px solid #5b2c0f',
+                borderRadius: '16px',
+                padding: '30px',
+                maxWidth: '700px',
+                width: '100%',
+                margin: '100px auto 0 auto',
+                boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
+                textAlign: 'center',
+              }}
+            >
+              <h1
+                style={{
+                  fontSize: '28px',
+                  fontWeight: 'bold',
+                  color: '#78290f',
+                  marginBottom: '25px',
+                }}
+              >
+                Hasil Tes Membaca
+              </h1>
+
+              <div
+                style={{
+                  backgroundColor: '#f8f0e5',
+                  border: '3px solid #5b2c0f',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  marginBottom: '20px',
+                }}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-bold text-[#5b2c0f]">Nama:</h2>
+                  <p className="text-xl">{getValues('name')}</p>
+                </div>
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-bold text-[#5b2c0f]">Kelas:</h2>
+                  <p className="text-xl">{getValues('class')}</p>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  marginBottom: '30px',
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: '#f8f0e5',
+                    border: '3px solid #5b2c0f',
+                    borderRadius: '12px',
+                    padding: '20px',
+                    width: '48%',
+                    textAlign: 'center',
+                  }}
+                >
+                  <h2 className="text-xl font-bold text-[#5b2c0f] mb-2">Waktu Membaca</h2>
+                  <p className="text-3xl font-bold">{getValues('count')} detik</p>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: '#f8f0e5',
+                    border: '3px solid #5b2c0f',
+                    borderRadius: '12px',
+                    padding: '20px',
+                    width: '48%',
+                    textAlign: 'center',
+                  }}
+                >
+                  <h2 className="text-xl font-bold text-[#5b2c0f] mb-2">Skor Quiz</h2>
+                  <p className="text-3xl font-bold">{score} / 100</p>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: score >= 60 ? '#d4edda' : '#f8d7da',
+                  border: `3px solid ${score >= 60 ? '#28a745' : '#dc3545'}`,
+                  borderRadius: '12px',
+                  padding: '20px',
+                  marginBottom: '30px',
+                }}
+              >
+                <h2 className="text-xl font-bold mb-2">{score >= 60 ? 'Selamat!' : 'Terus Berlatih!'}</h2>
+                <p>{score >= 60 ? 'Kamu telah berhasil menyelesaikan tes membaca dengan baik.' : 'Jangan menyerah, teruslah berlatih untuk meningkatkan kemampuan membacamu.'}</p>
+              </div>
+
+              <button
+                onClick={() => setStep(1)}
+                style={{
+                  backgroundColor: '#5b2c0f',
+                  color: 'white',
+                  padding: '10px 30px',
+                  fontSize: '18px',
+                  border: 'none',
+                  borderRadius: '10px',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                }}
+              >
+                Kembali ke Awal
+              </button>
+            </div>
           )}
         </form>
       </FormProvider>
