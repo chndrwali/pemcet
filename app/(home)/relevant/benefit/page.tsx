@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { Header } from '@/components/header/header';
-import { getCurrentUser } from '@/actions/getCurrentUser';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,11 +8,9 @@ export const metadata: Metadata = {
 };
 
 const RelevantPage = async () => {
-  const currentUser = await getCurrentUser();
-
   return (
     <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-desa z-20">
-      <Header currentUser={currentUser} />
+      <Header />
       <div
         style={{
           maxWidth: '400px',

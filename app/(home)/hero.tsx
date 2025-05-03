@@ -1,16 +1,11 @@
 'use client';
 
-import { SafeUser } from '@/types';
 import { Caveat_Brush } from 'next/font/google';
 import { useRouter } from 'next/navigation';
 
 const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
 
-interface HeroProps {
-  currentUser: SafeUser | null;
-}
-
-export const Hero = ({ currentUser }: HeroProps) => {
+export const Hero = () => {
   const router = useRouter();
 
   return (
@@ -23,7 +18,7 @@ export const Hero = ({ currentUser }: HeroProps) => {
       <div className="mt-[20px]">
         <button
           onClick={() => {
-            router.push(currentUser ? '/doa' : '/login');
+            router.push('/doa');
           }}
           style={{
             display: 'inline-block',

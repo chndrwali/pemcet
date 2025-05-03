@@ -1,51 +1,45 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { Caveat_Brush } from 'next/font/google';
-import { ButtonNextPrevious } from '@/components/button-next-previous';
-
-const caveat = Caveat_Brush({ subsets: ['latin'], weight: ['400'] });
+import Link from 'next/link';
 
 const route = [
   {
-    label: 'Pengertian Membaca Cepat',
-    link: '/learning-materials/understanding',
+    label: 'Materi',
+    icon: '/icon/1.png',
+    link: '/learning-materials/percakapan',
   },
   {
-    label: 'Manfaat Membaca Cepat',
+    label: 'Latihan Membaca Cepat',
+    icon: '/icon/2.png',
     link: '/learning-materials/benefit',
   },
   {
-    label: 'Prinsip Dasar Membaca Cepat',
+    label: 'Tes Membaca Cepat',
+    icon: '/icon/4.png',
     link: '/learning-materials/basic-principles',
   },
   {
-    label: 'Teknik Dasar Membaca Cepat',
+    label: 'Latihan Meningkatkan Membaca Cepat',
+    icon: '/icon/3.png',
     link: '/learning-materials/basic-technique',
+  },
+  {
+    label: 'Game',
+    icon: '/icon/4.png',
+    link: '/games',
   },
 ];
 
 export const NavigationMaterial = () => {
-  const router = useRouter();
-
   return (
-    <>
-      <div className="grid grid-cols-2 md:flex md:items-center p-4 gap-4 place-items-center mt-20 sm:mt-10">
-        {route.map((item) => (
-          <div
-            key={item.label}
-            className="group relative rounded-full bg-amber-200 w-[120px] h-[120px] flex flex-col items-center justify-center outline-2 outline-dotted outline-white shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:bg-gradient-to-br hover:from-yellow-300 hover:to-orange-400"
-          >
-            <button className="flex flex-col items-center justify-center text-center focus:outline-none p-6" onClick={() => router.push(item.link)}>
-              <Image src="/logo/book.png" alt={item.label} width={80} height={80} className="transition-transform duration-300 group-hover:scale-110" />
-              <span className={`${caveat.className} mt-2 text-xs leading-tight break-words uppercase font-semibold group-hover:text-white`}>{item.label}</span>
-            </button>
-          </div>
-        ))}
-      </div>
-      <ButtonNextPrevious isLeft={true} onClick={() => router.back()} />
-      <ButtonNextPrevious isLeft={false} onClick={() => router.push('/learning-materials/understanding')} />
-    </>
+    <div className="bg-[#3a1f13] border-4 border-white rounded-2xl p-6 max-w-[950px] mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 place-items-center">
+      {route.map((item) => (
+        <Link key={item.label} href={item.link} className="bg-white rounded-xl p-4 w-[160px] h-[200px] shadow-lg flex flex-col justify-between items-center text-black text-center no-underline">
+          <Image src={item.icon} alt={item.label} width={100} height={250} className="object-contain w-full h-[250px]" />
+          <div className="-mb-[30px] bg-[#192a56] text-white rounded-md px-2 py-2 w-full text-xs font-bold min-h-[48px] flex items-center justify-center text-center leading-tight">{item.label.toUpperCase()}</div>
+        </Link>
+      ))}
+    </div>
   );
 };

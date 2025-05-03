@@ -3,14 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import UserMenu from './user-menu';
-import { SafeUser } from '@/types';
 
-interface HeaderProps {
-  currentUser: SafeUser | null;
-}
-
-export const Header = ({ currentUser }: HeaderProps) => {
+export const Header = () => {
   const pathname = usePathname();
 
   const isNotHome = ['/learning-materials', '/relevant', '/reading-simulation', '/test-reading', '/test-understanding', '/home', '/doa'].some((path) => pathname.startsWith(path));
@@ -33,7 +27,7 @@ export const Header = ({ currentUser }: HeaderProps) => {
           {!isNotHome && <Image src="/logo/logo2.png" alt="Logo 2" width={44} height={44} />}
           {isNotHome && (
             <Link
-              href="/"
+              href={pathname === '/learning-materials' ? '/' : pathname.startsWith('/learning-materials') ? '/learning-materials' : '/'}
               style={{
                 backgroundColor: '#fff',
                 border: '2px solid #4b7bec',
@@ -52,7 +46,6 @@ export const Header = ({ currentUser }: HeaderProps) => {
               <Image src="/icon/home-page.png" alt="Home" width={35} height={35} style={{ width: '35px', height: '35px' }} />
             </Link>
           )}
-          <UserMenu currentUser={currentUser} />
         </div>
       </div>
     </header>

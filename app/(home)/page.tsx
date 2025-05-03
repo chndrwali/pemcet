@@ -1,17 +1,14 @@
-import { getCurrentUser } from '@/actions/getCurrentUser';
 import { Hero } from './hero';
 import { Bottom } from './bottom';
 import { Header } from '@/components/header/header';
 import Image from 'next/image';
 
 export default async function Home() {
-  const currentUser = await getCurrentUser();
-
   return (
     <>
       <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-desa z-20">
-        <Header currentUser={currentUser} />
-        <Hero currentUser={currentUser} />
+        <Header />
+        <Hero />
         <div className="mt-[120px] sm:mt-[150px]">
           <Image src="/anak.png" alt="anak" width={400} height={200} />
         </div>
