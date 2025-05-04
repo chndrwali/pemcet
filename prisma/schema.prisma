@@ -142,6 +142,7 @@ model QuizResult {
   class Int
   count Int
   quiz Int
+  type String
   submittedAt DateTime @default(now())
 }
 
@@ -151,6 +152,7 @@ enum CorrrectAnswer {
   C
   D
 }
+
 
 enum LevelReading {
   Pemula

@@ -22,11 +22,11 @@ const route = [
   {
     label: 'Latihan Meningkatkan Membaca Cepat',
     icon: '/icon/3.png',
-    link: '/learning-materials/basic-technique',
+    link: '/meningkatkan-membaca',
   },
   {
     label: 'Game',
-    icon: '/icon/4.png',
+    icon: '/logo/games.svg',
     link: '/games',
   },
 ];
