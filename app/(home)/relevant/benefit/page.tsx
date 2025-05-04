@@ -116,8 +116,8 @@ const RelevantPage = async () => {
           }}
         >
           <ol>
-            <li>Peserta didik dapat membaca teks bacaan dengan kecepatan minimal 250 kata per menit dengan tetap mempertahankan pemahaman terhadap isi teks.</li>
-            <li>Peserta didik mampu menjawab pertanyaan berdasarkan isi teks yang telah dibaca.</li>
+            <li>1. Peserta didik dapat membaca teks bacaan dengan kecepatan minimal 250 kata per menit dengan tetap mempertahankan pemahaman terhadap isi teks.</li>
+            <li>2. Peserta didik mampu menjawab pertanyaan berdasarkan isi teks yang telah dibaca.</li>
           </ol>
         </div>
       </div>

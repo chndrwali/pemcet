@@ -98,9 +98,9 @@ const Page = () => {
           >
             Latihan Membaca Cepat
           </div>
-          <div className="flex items-center justify-between my-8 px-20 w-full">
-            <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Tes Kemampuan (Membaca 190 Kata)</div>
-            <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Waktu: {waktu < 10 ? `0${waktu}` : waktu} Detik</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center items-center mt-4 mb-6 px-6 w-full max-w-4xl">
+            <div className="bg-[#3e1f1f] text-white px-6 py-3 rounded-xl font-bold text-center w-full sm:w-auto">Tes Membaca (190 Kata)</div>
+            <div className="bg-[#3e1f1f] text-white px-6 py-3 rounded-xl font-bold text-center w-full sm:w-auto">Waktu: {waktu < 10 ? `0${waktu}` : waktu} Detik</div>
           </div>
           <div
             className="bg-white mx-auto w-4/5 h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative"
@@ -123,27 +123,34 @@ const Page = () => {
               marginRight: 'auto',
             }}
           >
-            {mulai ? <div>{teksPerBaris[barisAktif]}</div> : <p>Klik tombol mulai untuk memulai latihan</p>}
+            {mulai ? (
+              <div>{teksPerBaris[barisAktif]}</div>
+            ) : (
+              <div className="flex flex-col">
+                <p>Klik tombol mulai untuk memulai latihan</p>
+                {!mulai && (
+                  <button
+                    onClick={handleMulai}
+                    style={{
+                      backgroundColor: '#28a745',
+                      color: '#fff',
+                      border: 'none',
+                      padding: '14px 28px',
+                      fontSize: '18px',
+                      borderRadius: '10px',
+                      display: 'block',
+                      margin: '16px auto 0 auto',
+                      cursor: 'pointer',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    Mulai
+                  </button>
+                )}
+              </div>
+            )}
           </div>
-          {!mulai && (
-            <button
-              onClick={handleMulai}
-              style={{
-                backgroundColor: '#28a745',
-                color: '#fff',
-                border: 'none',
-                padding: '15px 30px',
-                fontSize: '20px',
-                borderRadius: '10px',
-                display: 'block',
-                margin: '30px auto 0 auto',
-                cursor: 'pointer',
-                fontWeight: 'bold',
-              }}
-            >
-              Mulai Latihan
-            </button>
-          )}
+
           {waktu === 0 && (
             <button onClick={handleNext} className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
               <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />

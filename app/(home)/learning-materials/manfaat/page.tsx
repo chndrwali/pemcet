@@ -58,7 +58,7 @@ const Page = () => {
         </ul>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '50px', width: '100%', paddingLeft: '10px', paddingRight: '10px' }}>
-        <Link href="/learning-materials/percakapan">
+        <Link href="/learning-materials/percakapan?step=2">
           <Image src="/icon/arrow.png" width={50} height={50} alt="Left" style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
         </Link>
 

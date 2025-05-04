@@ -8,41 +8,15 @@ import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { z } from 'zod';
 import { postQuiz } from '@/actions/postQuiz';
+import { Pause } from 'lucide-react';
 
 const Page = () => {
   const [waktu, setWaktu] = useState(0);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
-  const [barisAktif, setBarisAktif] = useState(0);
   const [step, setStep] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
   const [score, setScore] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const teksPerBaris = [
-    'JUDUL: Rahasia Danau Biru',
-    'Di sebuah desa kecil yang dikelilingi pegunungan hijau, terdapat danau berwarna biru yang jernih dan tenang.',
-    'Penduduk desa menyebutnya Danau Biru dan percaya bahwa danau itu menyimpan rahasia besar.',
-    'Konon, di dasar danau tersembunyi tongkat ajaib yang bisa membawa keberuntungan bagi siapa pun yang menemukannya.',
-    'Seorang anak bernama Bima tinggal di desa itu bersama keluarganya.',
-    'Bima dikenal sebagai anak yang penasaran dan suka bertanya.',
-    'Ia sering mendengar cerita tentang tongkat ajaib dari para orang tua di desa.',
-    'Bima mulai berpikir, apakah benar tongkat itu ada? Dan jika ada, seperti apa bentuknya?',
-    'Setiap sore, Bima duduk di tepi danau, mengamati airnya yang tenang dan biru.',
-    'Ia percaya, suatu hari ia bisa menemukan tongkat itu dan membantu desanya menjadi makmur kembali.',
-    'Bagi Bima, Danau Biru bukan hanya tempat yang indah, tapi juga penuh misteri dan harapan.',
-    'Ia tidak pernah bosan menatap danau itu, berharap bisa menemukan sesuatu yang luar biasa.',
-    'Hari demi hari berlalu, namun Bima tetap sabar dan penuh semangat.',
-    'Ia percaya bahwa rasa ingin tahu adalah awal dari penemuan besar.',
-    'Penduduk desa pun mulai melihat kesungguhan Bima.',
-    'Beberapa mulai membantu dengan memberi cerita-cerita lama tentang danau itu.',
-    'Bima semakin yakin bahwa tongkat itu bukan sekadar dongeng.',
-    'Jika tongkat itu benar-benar ada, mungkin itu bisa membawa desa mereka kembali sejahtera seperti dulu.',
-    'Danau Biru pun menjadi saksi dari mimpi dan semangat seorang anak yang tak pernah menyerah.',
-    'Apakah Bima akan menemukan tongkat ajaib itu? Cerita ini belum berakhir…',
-    'Tapi satu hal yang pasti: keberanian dan rasa ingin tahu adalah kekuatan sejati.',
-  ];
-
-  const durasiPerBaris = (30 * 1000) / teksPerBaris.length;
 
   useEffect(() => {
     let timer: ReturnType<typeof setInterval>;
@@ -54,28 +28,14 @@ const Page = () => {
     return () => clearInterval(timer);
   }, [mulai]);
 
-  // Ganti baris teks otomatis saat latihan dimulai
-  useEffect(() => {
-    let teksTimer: ReturnType<typeof setInterval>;
-    if (mulai) {
-      teksTimer = setInterval(() => {
-        setBarisAktif((prev) => prev + (1 % teksPerBaris.length));
-      }, durasiPerBaris);
-    }
-    return () => clearInterval(teksTimer);
-  }, [mulai, durasiPerBaris, teksPerBaris.length]);
-
   const handleSelesaiMembaca = () => {
     setMulai(false);
     form.setValue('count', waktu);
-    setStep(4);
   };
 
   const handleMulaiMembaca = () => {
     setMulai(true);
     setWaktu(0);
-    setBarisAktif(0);
-    setStep(3);
   };
 
   const form = useForm<z.infer<typeof quizSchema>>({
@@ -170,7 +130,7 @@ const Page = () => {
     <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-deskripsi z-20">
       <Header />
       <FormProvider {...form}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[1000px]">
           {step === 1 && (
             <div
               style={{
@@ -304,7 +264,7 @@ const Page = () => {
               </div>
 
               <button
-                onClick={handleMulaiMembaca}
+                onClick={() => setStep(3)}
                 type="button"
                 style={{
                   position: 'absolute',
@@ -338,52 +298,86 @@ const Page = () => {
               </div>
               <div className="flex items-center justify-between my-8 px-20 w-full">
                 <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Membaca 250 Kata</div>
-                <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Waktu: {waktu < 10 ? `0${waktu}` : waktu} Detik</div>
+                <div className="flex items-center gap-4">
+                  {mulai && (
+                    <button type="button" onClick={handleSelesaiMembaca} className=" bg-[#3e1f1f] px-4 py-2 flex items-center rounded-lg text-white">
+                      <Pause /> Berhenti
+                    </button>
+                  )}
+                  <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Waktu: {waktu < 10 ? `0${waktu}` : waktu} Detik</div>
+                </div>
               </div>
               <div
-                className="bg-white mx-auto w-4/5 h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative"
+                className="bg-white mx-auto w-full rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative"
                 style={{
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   textAlign: 'center',
-                  height: '250px',
                   backgroundColor: '#fff',
                   borderRadius: '16px',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                   padding: '20px',
-                  fontSize: '24px',
                   fontWeight: 'bold',
                   marginTop: '30px',
                   color: '#333',
+                  width: '100%',
                   maxWidth: '800px',
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
               >
-                {mulai ? <div>{teksPerBaris[barisAktif]}</div> : <p>Klik tombol mulai untuk memulai tes</p>}
+                {mulai ? (
+                  <div className="text-justify ">
+                    <h1 className="font-bold text-center">Rahasia Danau Biru</h1>
+                    <p>Di sebuah desa kecil yang dikelilingi pegunungan hijau, terdapat danau berwarna biru yang jernih dan tenang.,</p>
+                    <p>Penduduk desa menyebutnya Danau Biru dan percaya bahwa danau itu menyimpan rahasia besar.,</p>
+                    <p>Konon, di dasar danau tersembunyi tongkat ajaib yang bisa membawa keberuntungan bagi siapa pun yang menemukannya.,</p>
+                    <p>Seorang anak bernama Bima tinggal di desa itu bersama keluarganya.,</p>
+                    <p>Bima dikenal sebagai anak yang penasaran dan suka bertanya.,</p>
+                    <p>Ia sering mendengar cerita tentang tongkat ajaib dari para orang tua di desa.,</p>
+                    <p>Bima mulai berpikir, apakah benar tongkat itu ada? Dan jika ada, seperti apa bentuknya?,</p>
+                    <p>Setiap sore, Bima duduk di tepi danau, mengamati airnya yang tenang dan biru.,</p>
+                    <p>Ia percaya, suatu hari ia bisa menemukan tongkat itu dan membantu desanya menjadi makmur kembali.,</p>
+                    <p>Bagi Bima, Danau Biru bukan hanya tempat yang indah, tapi juga penuh misteri dan harapan.,</p>
+                    <p>Ia tidak pernah bosan menatap danau itu, berharap bisa menemukan sesuatu yang luar biasa.,</p>
+                    <p>Hari demi hari berlalu, namun Bima tetap sabar dan penuh semangat.,</p>
+                    <p>Ia percaya bahwa rasa ingin tahu adalah awal dari penemuan besar.,</p>
+                    <p>Penduduk desa pun mulai melihat kesungguhan Bima.,</p>
+                    <p>Beberapa mulai membantu dengan memberi cerita-cerita lama tentang danau itu.,</p>
+                    <p>Bima semakin yakin bahwa tongkat itu bukan sekadar dongeng.,</p>
+                    <p>Jika tongkat itu benar-benar ada, mungkin itu bisa membawa desa mereka kembali sejahtera seperti dulu.,</p>
+                    <p>Danau Biru pun menjadi saksi dari mimpi dan semangat seorang anak yang tak pernah menyerah.,</p>
+                    <p>Apakah Bima akan menemukan tongkat ajaib itu? Cerita ini belum berakhir…,</p>
+                    <p>Tapi satu hal yang pasti: keberanian dan rasa ingin tahu adalah kekuatan sejati.,</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col">
+                    <p>Klik tombol mulai untuk memulai tes</p>
+                    {!mulai && (
+                      <button
+                        onClick={handleMulaiMembaca}
+                        style={{
+                          backgroundColor: '#28a745',
+                          color: '#fff',
+                          border: 'none',
+                          padding: '15px 30px',
+                          fontSize: '20px',
+                          borderRadius: '10px',
+                          display: 'block',
+                          margin: '30px auto 0 auto',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        Mulai
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
-              {!mulai && (
-                <button
-                  onClick={handleMulaiMembaca}
-                  style={{
-                    backgroundColor: '#28a745',
-                    color: '#fff',
-                    border: 'none',
-                    padding: '15px 30px',
-                    fontSize: '20px',
-                    borderRadius: '10px',
-                    display: 'block',
-                    margin: '30px auto 0 auto',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Mulai Latihan
-                </button>
-              )}
 
-              <button onClick={handleSelesaiMembaca} type="button" className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
+              <button onClick={() => setStep(4)} type="button" className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
               </button>
             </>
@@ -420,7 +414,7 @@ const Page = () => {
               >
                 <ol>
                   <li>
-                    <strong>Siapakah tokoh utama dalam cerita &quot;Rahasia Danau Biru&quot;?</strong>
+                    <strong>1. Siapakah tokoh utama dalam cerita &quot;Rahasia Danau Biru&quot;?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -441,7 +435,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Apa yang diyakini oleh penduduk desa tentang tongkat ajaib?</strong>
+                    <strong>2. Apa yang diyakini oleh penduduk desa tentang tongkat ajaib?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -462,7 +456,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Mengapa Bima merasa penasaran terhadap legenda Danau Biru?</strong>
+                    <strong>3. Mengapa Bima merasa penasaran terhadap legenda Danau Biru?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div

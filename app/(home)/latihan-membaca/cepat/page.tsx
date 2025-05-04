@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(30);
+  const [waktu, setWaktu] = useState(25);
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -60,19 +60,17 @@ const Page = () => {
           </div>
           {/* Info dan Timer */}
           {mulai && (
-            <div className="flex items-center justify-between my-8 px-20 w-full">
-              <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Kemampuan Mengenali Kata (30 Detik)</div>
-              <div className="bg-[#3e1f1f] text-white px-5 py-2 rounded-[15px] font-bold">Waktu: {waktu < 10 ? `0${waktu}` : waktu} Detik</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center items-center mt-4 mb-6 px-6 w-full max-w-4xl">
+              <div className="bg-[#3e1f1f] text-white px-6 py-3 rounded-xl font-bold text-center w-full sm:w-auto">Kemampuan Mengenali Kata (25 Detik)</div>
+              <div className="bg-[#3e1f1f] text-white px-6 py-3 rounded-xl font-bold text-center w-full sm:w-auto">Waktu: {waktu < 10 ? `0${waktu}` : waktu} Detik</div>
             </div>
           )}
 
           {/* Running Text Box */}
           <div className="bg-white mx-auto w-4/5 h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
-              <div className={`absolute w-full text-[1.2rem] font-bold ${waktu === 0 ? 'animate-none' : 'animate-scrollDown'}`}>
-                <li>
-                  <b>Kucing Hitam yang Bijaksana</b>
-                </li>
+              <div className={`absolute w-full text-[1.2rem]  text-center ${waktu === 0 ? 'animate-none' : 'animate-scrollDown'}`}>
+                <h1 className="font-bold text-center">Kucing Hitam yang Bijaksana</h1>
                 <p>Dlahu satau wktu, hduiplah sseekor kcoong brwarna htam di sebuat htuatn.</p>
                 <p>Kcoong tbreseut snagat cpadik dngean mlcari mknaan di mlama hrai.</p>
                 <p>Sautu hiari, ia mnemukan sbeuah bkaul ynag bsurir hkamd dan rtoi.</p>
@@ -81,7 +79,8 @@ const Page = () => {
                 <p>Apda akhrnya, kcoong htam itupun mjadi pmpinan di htuan trsbt krna kbijakannya.</p>
               </div>
             ) : (
-              <div style={{ textAlign: 'center', marginTop: '40px' }}>
+              <div className="flex flex-col items-center p-4">
+                <p className="text-lg font-semibold">Klik tombol mulai untuk memulai latihan</p>
                 <button
                   onClick={() => setMulai(true)}
                   style={{
@@ -95,8 +94,9 @@ const Page = () => {
                     cursor: 'pointer',
                     boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
                   }}
+                  className="w-fit mt-14"
                 >
-                  Mulai Latihan
+                  Mulai
                 </button>
               </div>
             )}

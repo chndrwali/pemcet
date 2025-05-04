@@ -12,7 +12,7 @@ export const Header = () => {
   const isAdminPage = pathname.startsWith('/admin');
 
   return (
-    <header className="sticky top-0 px-2 lg:px-4 w-full bg-transparent py-2">
+    <header className="sticky top-0 px-2 lg:px-4 w-full bg-transparent py-2 z-50">
       <div className="w-full flex items-center justify-between">
         {isAdminPage ? (
           <div />
@@ -28,7 +28,7 @@ export const Header = () => {
           {!isNotHome && <Image src="/logo/logo2.png" alt="Logo 2" width={44} height={44} />}
           {isNotHome && (
             <Link
-              href={isNotMaterials ? '/learning-materials' : '/'}
+              href={pathname === '/learning-materials' ? '/' : isNotMaterials ? '/learning-materials' : '/'}
               style={{
                 backgroundColor: '#fff',
                 border: '2px solid #4b7bec',

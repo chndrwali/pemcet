@@ -65,6 +65,7 @@ const Page = () => {
         </div>
 
         {/* Petunjuk */}
+        {/* Petunjuk */}
         <div
           className="mt-12 bg-white rounded-2xl border-[5px] border-[#3e1f1f] p-6"
           style={{
@@ -72,16 +73,39 @@ const Page = () => {
             margin: '40px auto',
           }}
         >
-          <h2 className="text-2xl font-bold text-[#3e1f1f] mb-4 text-center">Petunjuk Latihan</h2>
-          <div className="space-y-4 text-gray-700">
-            <p>
-              <span className="font-bold">1. Prinsip Membaca Cepat:</span> Kerjakan soal pilihan ganda untuk memahami prinsip-prinsip dalam membaca cepat.
-            </p>
-            <p>
-              <span className="font-bold">2. Kebiasaan Buruk Membaca:</span> Pelajari kebiasaan yang harus dihindari untuk meningkatkan kecepatan membaca.
-            </p>
-            <p className="font-bold text-center mt-6">Lakukan latihan secara rutin untuk meningkatkan kemampuan membaca cepat!</p>
+          <h2 className="text-2xl font-bold text-[#3e1f1f] mb-6 text-center">Petunjuk Permainan</h2>
+
+          <div className="grid md:grid-cols-2 gap-8 text-gray-700 text-base leading-relaxed">
+            {/* Prinsip Membaca Cepat */}
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-[#3e1f1f]">📖 Prinsip Membaca Cepat</h3>
+              <p className="italic mb-2">Judul Permainan: Roda Acak</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>Klik tombol “Putar” pada roda yang muncul di layar.</li>
+                <li>Roda akan berputar otomatis dan menunjuk salah satu dari lima soal.</li>
+                <li>Setelah roda berhenti, bacalah soal pilihan ganda yang muncul.</li>
+                <li>Pilih jawaban (A, B, C, atau D) yang paling benar.</li>
+                <li>Klik “Lanjutkan” atau “Putar Lagi” untuk soal berikutnya.</li>
+                <li>Ulangi sampai semua soal selesai dikerjakan.</li>
+              </ol>
+            </div>
+
+            {/* Kebiasaan Buruk Membaca */}
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-[#3e1f1f]">📚 Kebiasaan Buruk Membaca</h3>
+              <p className="italic mb-2">Judul Permainan: Membuka Kotak</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>Beberapa kotak tertutup dengan nomor akan muncul di layar.</li>
+                <li>Klik salah satu kotak untuk membukanya.</li>
+                <li>Akan muncul satu soal pilihan ganda (PG).</li>
+                <li>Bacalah soal dan pilih jawaban yang paling tepat.</li>
+                <li>Kembali ke layar utama dan buka kotak lainnya.</li>
+                <li>Lanjutkan sampai semua kotak terbuka dan soal terjawab.</li>
+              </ol>
+            </div>
           </div>
+
+          <p className="font-bold text-center text-[#3e1f1f] mt-8">🎯 Lakukan latihan secara rutin untuk meningkatkan kemampuan membaca cepat!</p>
         </div>
 
         {/* Tombol Kembali */}
