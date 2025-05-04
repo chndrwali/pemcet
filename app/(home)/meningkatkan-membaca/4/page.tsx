@@ -11,7 +11,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const Page = () => {
-  const [waktu, setWaktu] = useState(0);
+  const [waktu, setWaktu] = useState(35);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
   const [step, setStep] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
@@ -22,7 +22,15 @@ const Page = () => {
     let timer: ReturnType<typeof setInterval>;
     if (mulai) {
       timer = setInterval(() => {
-        setWaktu((prev) => prev + 1);
+        setWaktu((prev) => {
+          if (prev <= 1) {
+            // When timer reaches 0, clear interval and call handleSelesaiMembaca
+            clearInterval(timer);
+            setMulai(false);
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
     }
     return () => clearInterval(timer);
@@ -32,7 +40,6 @@ const Page = () => {
     setMulai(false);
     form.setValue('count', waktu);
     setStep(3);
-    setWaktu(0);
   };
 
   const form = useForm<z.infer<typeof quizSchema>>({
@@ -66,9 +73,9 @@ const Page = () => {
     const correctAnswers: Record<string, string> = {
       '1': 'C', // Bima
       '2': 'B', // Siapa pun yang menemukannya akan mendapat keberuntungan
-      '3': 'B', // Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan
+      '3': 'C', // Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan
       '4': 'C', // Ia duduk di tepi danau dan mengamati dengan sabar setiap sore
-      '5': 'C', // Kehidupan desa bisa kembali makmur seperti dulu
+      '5': 'B', // Kehidupan desa bisa kembali makmur seperti dulu
     };
 
     let totalScore = 0;
@@ -263,7 +270,7 @@ const Page = () => {
                 {mulai ? (
                   <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'}`}>
                     <h1 className="text-center text-[#3e1f1f]">Harta Karun di Bukit Senja</h1>
-                    <p className="whitespace-pre-wrap break-words w-full pr-4">
+                    <p className="whitespace-pre-wrap break-words w-full pr-10">
                       {' '}
                       Di sebuah dusun yang dikelilingi oleh ladang dan kebun teh, terdapat sebuah bukit bernama Bukit Senja. Bukit itu terkenal karena pemandangannya yang indah saat matahari terbenam. Namun bukan hanya keindahannya yang
                       dikenal orang, melainkan juga sebuah legenda yang diwariskan dari generasi ke generasi. Konon, di puncak bukit pernah tinggal seorang pertapa tua yang menyimpan sebuah kotak misterius berisi harta karun. Kotak itu
@@ -279,7 +286,10 @@ const Page = () => {
                 ) : (
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
                     <button
-                      onClick={() => setMulai(true)}
+                      onClick={() => {
+                        setMulai(true);
+                        setWaktu(35);
+                      }}
                       style={{
                         backgroundColor: '#ffc107',
                         color: '#000',
@@ -292,7 +302,7 @@ const Page = () => {
                         boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
                       }}
                     >
-                      Mulai Latihan
+                      Mulai
                     </button>
                   </div>
                 )}
@@ -300,9 +310,6 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={() => setMulai(false)} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Berhenti
-                  </button>
                   <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
                     Submit
                   </button>
@@ -346,7 +353,7 @@ const Page = () => {
               >
                 <ol>
                   <li>
-                    <strong>Siapakah tokoh utama dalam cerita &quot;Rahasia Danau Biru&quot;?</strong>
+                    <strong>1. Di mana lokasi harta karun dalam legenda tersebut?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -356,10 +363,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['1'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Penjaga hutan'}
-                            {option === 'B' && 'Penduduk desa'}
-                            {option === 'C' && 'Bima'}
-                            {option === 'D' && 'Ikan-ikan di danau'}
+                            {option === 'A' && 'Di dalam gua tersembunyi'}
+                            {option === 'B' && 'Di bawah sungai di dusun'}
+                            {option === 'C' && 'Di puncak Bukit Senja'}
+                            {option === 'D' && 'Di tengah ladang teh'}
                           </span>
                         </div>
                       ))}
@@ -367,7 +374,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Apa yang diyakini oleh penduduk desa tentang tongkat ajaib?</strong>
+                    <strong>2. Siapa nama anak yang sering mendaki Bukit Senja?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -377,10 +384,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['2'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Tongkat itu bisa mengobati penyakit'}
-                            {option === 'B' && 'Siapa pun yang menemukannya akan mendapat keberuntungan'}
-                            {option === 'C' && 'Tongkat itu bisa memanggil hujan'}
-                            {option === 'D' && 'Tongkat itu bisa membuat danau menjadi besar'}
+                            {option === 'A' && 'Bima'}
+                            {option === 'B' && 'Saka'}
+                            {option === 'C' && 'Raka'}
+                            {option === 'D' && 'Aji'}
                           </span>
                         </div>
                       ))}
@@ -388,7 +395,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Mengapa Bima merasa penasaran terhadap legenda Danau Biru?</strong>
+                    <strong>3. Mengapa masyarakat percaya bahwa hanya orang berhati tulus yang dapat menemukan kotak harta karun?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -398,10 +405,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['3'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Karena ia ingin menjadi penjaga danau'}
-                            {option === 'B' && 'Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan'}
-                            {option === 'C' && 'Karena ia takut danau akan hilang'}
-                            {option === 'D' && 'Karena ia ingin bermain di danau setiap hari'}
+                            {option === 'A' && 'Karena kotak itu dilindungi oleh makhluk gaib'}
+                            {option === 'B' && 'Karena kotak tersebut memiliki sistem keamanan tinggi'}
+                            {option === 'C' && 'Karena kotak itu dikaitkan dengan nilai moral dan keikhlasan dalam legenda'}
+                            {option === 'D' && 'Karena kotak itu hanya bisa terlihat saat malam hari'}
                           </span>
                         </div>
                       ))}
@@ -445,7 +452,7 @@ const Page = () => {
               >
                 {/* Soal 4 */}
                 <div style={{ marginBottom: '25px' }}>
-                  <p style={{ fontWeight: 'bold' }}>4. Bagaimana cara Bima menunjukkan rasa ingin tahunya terhadap tongkat ajaib?</p>
+                  <p style={{ fontWeight: 'bold' }}>4. Bagaimana reaksi Saka saat menemukan benda persegi di balik akar pohon besar?</p>
                   <div className="mt-2">
                     {['A', 'B', 'C', 'D'].map((option) => (
                       <div
@@ -455,10 +462,10 @@ const Page = () => {
                       >
                         <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['4'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                         <span>
-                          {option === 'A' && 'Ia menyelam langsung ke danau'}
-                          {option === 'B' && 'Ia bertanya kepada penjaga danau'}
-                          {option === 'C' && 'Ia duduk di tepi danau dan mengamati dengan sabar setiap sore'}
-                          {option === 'D' && 'Ia mengajak teman-temannya bermain di sekitar danau'}
+                          {option === 'A' && 'Ia langsung membuka benda itu dan membawanya pulang'}
+                          {option === 'B' && 'Ia merasa takut dan berlari meninggalkannya'}
+                          {option === 'C' && 'Ia percaya bahwa itu mungkin kotak legenda dan mulai menyusun rencana'}
+                          {option === 'D' && 'Ia menguburnya kembali agar tidak ditemukan orang lain'}
                         </span>
                       </div>
                     ))}
@@ -466,7 +473,7 @@ const Page = () => {
                 </div>
 
                 <div>
-                  <p style={{ fontWeight: 'bold' }}>5. Apa kemungkinan yang bisa terjadi jika Bima benar-benar menemukan tongkat ajaib tersebut?</p>
+                  <p style={{ fontWeight: 'bold' }}>5. Apa dampak yang mungkin terjadi bagi dusun jika kotak misterius benar-benar ditemukan?</p>
                   <div className="mt-2">
                     {['A', 'B', 'C', 'D'].map((option) => (
                       <div
@@ -476,10 +483,10 @@ const Page = () => {
                       >
                         <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['5'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                         <span>
-                          {option === 'A' && 'Danau akan mengering'}
-                          {option === 'B' && 'Desa akan dihantui oleh penjaga danau'}
-                          {option === 'C' && 'Kehidupan desa bisa kembali makmur seperti dulu'}
-                          {option === 'D' && 'Bima akan pindah dari desa'}
+                          {option === 'A' && 'Dusun akan tenggelam oleh banjir emas'}
+                          {option === 'B' && 'Masyarakat dusun akan mengalami kesejahteraan'}
+                          {option === 'C' && 'Penduduk dusun akan pindah ke kota'}
+                          {option === 'D' && 'Bukit Senja akan ditutup untuk umum'}
                         </span>
                       </div>
                     ))}

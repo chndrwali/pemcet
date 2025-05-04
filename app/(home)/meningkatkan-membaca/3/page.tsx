@@ -11,7 +11,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const Page = () => {
-  const [waktu, setWaktu] = useState(0);
+  const [waktu, setWaktu] = useState(35);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
   const [step, setStep] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
@@ -22,7 +22,15 @@ const Page = () => {
     let timer: ReturnType<typeof setInterval>;
     if (mulai) {
       timer = setInterval(() => {
-        setWaktu((prev) => prev + 1);
+        setWaktu((prev) => {
+          if (prev <= 1) {
+            // When timer reaches 0, clear interval and call handleSelesaiMembaca
+            clearInterval(timer);
+            setMulai(false);
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
     }
     return () => clearInterval(timer);
@@ -32,7 +40,6 @@ const Page = () => {
     setMulai(false);
     form.setValue('count', waktu);
     setStep(3);
-    setWaktu(0);
   };
 
   const form = useForm<z.infer<typeof quizSchema>>({
@@ -64,9 +71,9 @@ const Page = () => {
   const calculateScore = () => {
     // Correct answers for each question (1-indexed)
     const correctAnswers: Record<string, string> = {
-      '1': 'C', // Bima
+      '1': 'B', // Bima
       '2': 'B', // Siapa pun yang menemukannya akan mendapat keberuntungan
-      '3': 'B', // Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan
+      '3': 'C', // Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan
       '4': 'C', // Ia duduk di tepi danau dan mengamati dengan sabar setiap sore
       '5': 'C', // Kehidupan desa bisa kembali makmur seperti dulu
     };
@@ -289,7 +296,7 @@ const Page = () => {
                         boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
                       }}
                     >
-                      Mulai Latihan
+                      Mulai
                     </button>
                   </div>
                 )}
@@ -297,9 +304,6 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={() => setMulai(false)} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Berhenti
-                  </button>
                   <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
                     Submit
                   </button>
@@ -343,7 +347,7 @@ const Page = () => {
               >
                 <ol>
                   <li>
-                    <strong>Siapakah tokoh utama dalam cerita &quot;Rahasia Danau Biru&quot;?</strong>
+                    <strong>1. Siapa yang sebaiknya rutin berolahraga agar tubuh tetap sehat?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -353,10 +357,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['1'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Penjaga hutan'}
-                            {option === 'B' && 'Penduduk desa'}
-                            {option === 'C' && 'Bima'}
-                            {option === 'D' && 'Ikan-ikan di danau'}
+                            {option === 'A' && 'Atlet profesional'}
+                            {option === 'B' && 'Semua orang'}
+                            {option === 'C' && 'Hanya anak muda'}
+                            {option === 'D' && 'Orang yang sedang diet'}
                           </span>
                         </div>
                       ))}
@@ -364,7 +368,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Apa yang diyakini oleh penduduk desa tentang tongkat ajaib?</strong>
+                    <strong>2. Apa yang terjadi pada tubuh jika kita rajin berolahraga?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -374,10 +378,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['2'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Tongkat itu bisa mengobati penyakit'}
-                            {option === 'B' && 'Siapa pun yang menemukannya akan mendapat keberuntungan'}
-                            {option === 'C' && 'Tongkat itu bisa memanggil hujan'}
-                            {option === 'D' && 'Tongkat itu bisa membuat danau menjadi besar'}
+                            {option === 'A' && 'Tubuh menjadi cepat lelah'}
+                            {option === 'B' && 'Tubuh menjadi sehat dan bugar'}
+                            {option === 'C' && 'Berat bedan pasti turun'}
+                            {option === 'D' && 'Mudah terserang penyakit'}
                           </span>
                         </div>
                       ))}
@@ -385,7 +389,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Mengapa Bima merasa penasaran terhadap legenda Danau Biru?</strong>
+                    <strong>3. Mengapa olahraga dapat membantu seseorang lebih fokus dalam belajar?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -395,10 +399,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['3'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Karena ia ingin menjadi penjaga danau'}
-                            {option === 'B' && 'Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan'}
-                            {option === 'C' && 'Karena ia takut danau akan hilang'}
-                            {option === 'D' && 'Karena ia ingin bermain di danau setiap hari'}
+                            {option === 'A' && 'Karena olahraga membuat otot lebih kuat'}
+                            {option === 'B' && 'Karena olahraga membuat perut kenyang'}
+                            {option === 'C' && 'Karena olahraga mengeluarkan keringat dan membuat pikiran lebih rileks'}
+                            {option === 'D' && 'Karena olahraga dilakukan di pagi hari'}
                           </span>
                         </div>
                       ))}
@@ -442,7 +446,7 @@ const Page = () => {
               >
                 {/* Soal 4 */}
                 <div style={{ marginBottom: '25px' }}>
-                  <p style={{ fontWeight: 'bold' }}>4. Bagaimana cara Bima menunjukkan rasa ingin tahunya terhadap tongkat ajaib?</p>
+                  <p style={{ fontWeight: 'bold' }}>4. Bagaimana cara mengajak teman atau keluarga agar semangat berolahraga bersama?</p>
                   <div className="mt-2">
                     {['A', 'B', 'C', 'D'].map((option) => (
                       <div
@@ -452,10 +456,10 @@ const Page = () => {
                       >
                         <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['4'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                         <span>
-                          {option === 'A' && 'Ia menyelam langsung ke danau'}
-                          {option === 'B' && 'Ia bertanya kepada penjaga danau'}
-                          {option === 'C' && 'Ia duduk di tepi danau dan mengamati dengan sabar setiap sore'}
-                          {option === 'D' && 'Ia mengajak teman-temannya bermain di sekitar danau'}
+                          {option === 'A' && 'Menyuruh mereka berolahraga setiap hari'}
+                          {option === 'B' && 'Memberi hadiah jika mau olahraga'}
+                          {option === 'C' && 'Mengajak mereka dengan kegiatan olahraga yang menyenangkan seperti bermain bola atau bersepeda bersama'}
+                          {option === 'D' && 'Melarang mereka bermain gadget'}
                         </span>
                       </div>
                     ))}
@@ -463,7 +467,7 @@ const Page = () => {
                 </div>
 
                 <div>
-                  <p style={{ fontWeight: 'bold' }}>5. Apa kemungkinan yang bisa terjadi jika Bima benar-benar menemukan tongkat ajaib tersebut?</p>
+                  <p style={{ fontWeight: 'bold' }}>5. Apa yang bisa terjadi jika seseorang hanya berolahraga tanpa menjaga pola makan dan istirahat yang cukup?</p>
                   <div className="mt-2">
                     {['A', 'B', 'C', 'D'].map((option) => (
                       <div
@@ -473,10 +477,10 @@ const Page = () => {
                       >
                         <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['5'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                         <span>
-                          {option === 'A' && 'Danau akan mengering'}
-                          {option === 'B' && 'Desa akan dihantui oleh penjaga danau'}
-                          {option === 'C' && 'Kehidupan desa bisa kembali makmur seperti dulu'}
-                          {option === 'D' && 'Bima akan pindah dari desa'}
+                          {option === 'A' && 'Tetap sehat sepenuhnya'}
+                          {option === 'B' && 'Tubuh tetap kuat dan tidak akan sakit'}
+                          {option === 'C' && 'Tubuh mungkin tidak mendapat manfaat maksimal dari olahraga'}
+                          {option === 'D' && 'Tidak ada pengaruh apa-apa'}
                         </span>
                       </div>
                     ))}

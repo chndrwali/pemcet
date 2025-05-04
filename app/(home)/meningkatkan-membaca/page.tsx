@@ -11,7 +11,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const Page = () => {
-  const [waktu, setWaktu] = useState(0);
+  const [waktu, setWaktu] = useState(24);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
   const [step, setStep] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
@@ -22,7 +22,15 @@ const Page = () => {
     let timer: ReturnType<typeof setInterval>;
     if (mulai) {
       timer = setInterval(() => {
-        setWaktu((prev) => prev + 1);
+        setWaktu((prev) => {
+          if (prev <= 1) {
+            // When timer reaches 0, clear interval and call handleSelesaiMembaca
+            clearInterval(timer);
+            setMulai(false);
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
     }
     return () => clearInterval(timer);
@@ -64,11 +72,11 @@ const Page = () => {
   const calculateScore = () => {
     // Correct answers for each question (1-indexed)
     const correctAnswers: Record<string, string> = {
-      '1': 'C', // Bima
-      '2': 'B', // Siapa pun yang menemukannya akan mendapat keberuntungan
+      '1': 'B', // Bima
+      '2': 'C', // Siapa pun yang menemukannya akan mendapat keberuntungan
       '3': 'B', // Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan
-      '4': 'C', // Ia duduk di tepi danau dan mengamati dengan sabar setiap sore
-      '5': 'C', // Kehidupan desa bisa kembali makmur seperti dulu
+      '4': 'D', // Ia duduk di tepi danau dan mengamati dengan sabar setiap sore
+      '5': 'D', // Kehidupan desa bisa kembali makmur seperti dulu
     };
 
     let totalScore = 0;
@@ -273,6 +281,7 @@ const Page = () => {
             <div className="w-full">
               {/* Judul */}
               <div
+                className="w-fit"
                 style={{
                   backgroundColor: '#442412',
                   color: 'white',
@@ -281,7 +290,6 @@ const Page = () => {
                   fontWeight: 'bold',
                   border: '9px solid #fff',
                   borderRadius: '20px',
-                  width: 'w-fit',
                   margin: '0 auto 30px auto',
                   fontFamily: '"Comic Sans MS", cursive',
                 }}
@@ -309,8 +317,13 @@ const Page = () => {
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                    <p>Klik tombol mulai untuk memulai latihan</p>
                     <button
-                      onClick={() => setMulai(true)}
+                      onClick={() => {
+                        setMulai(true);
+                        setWaktu(24);
+                      }}
+                      className="mt-4"
                       style={{
                         backgroundColor: '#ffc107',
                         color: '#000',
@@ -323,7 +336,7 @@ const Page = () => {
                         boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
                       }}
                     >
-                      Mulai Latihan
+                      Mulai
                     </button>
                   </div>
                 )}
@@ -331,9 +344,6 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={() => setMulai(false)} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Berhenti
-                  </button>
                   <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
                     Submit
                   </button>
@@ -377,7 +387,7 @@ const Page = () => {
               >
                 <ol>
                   <li>
-                    <strong>Siapakah tokoh utama dalam cerita &quot;Rahasia Danau Biru&quot;?</strong>
+                    <strong>1.Siapa saja yang bermain di taman bersama Rina?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -387,10 +397,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['1'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Penjaga hutan'}
-                            {option === 'B' && 'Penduduk desa'}
-                            {option === 'C' && 'Bima'}
-                            {option === 'D' && 'Ikan-ikan di danau'}
+                            {option === 'A' && 'Rina dan ayahnya'}
+                            {option === 'B' && 'Aji dan Siti'}
+                            {option === 'C' && 'Rina dan burung-burung'}
+                            {option === 'D' && 'Rina dan para pesepeda'}
                           </span>
                         </div>
                       ))}
@@ -398,7 +408,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Apa yang diyakini oleh penduduk desa tentang tongkat ajaib?</strong>
+                    <strong>2. Apa yang dilakukan Rina dan teman-temannya di taman?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -408,10 +418,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['2'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Tongkat itu bisa mengobati penyakit'}
-                            {option === 'B' && 'Siapa pun yang menemukannya akan mendapat keberuntungan'}
-                            {option === 'C' && 'Tongkat itu bisa memanggil hujan'}
-                            {option === 'D' && 'Tongkat itu bisa membuat danau menjadi besar'}
+                            {option === 'A' && 'Menonton televisi'}
+                            {option === 'B' && 'Bermain layang-layang'}
+                            {option === 'C' && 'Bermain sepak bola'}
+                            {option === 'D' && 'Menyiram bunga'}
                           </span>
                         </div>
                       ))}
@@ -419,7 +429,7 @@ const Page = () => {
                   </li>
                   <br />
                   <li>
-                    <strong>Mengapa Bima merasa penasaran terhadap legenda Danau Biru?</strong>
+                    <strong>3. Kapan Rina dan teman-temannya pergi ke taman?</strong>
                     <div className="mt-2">
                       {['A', 'B', 'C', 'D'].map((option) => (
                         <div
@@ -429,10 +439,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['3'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Karena ia ingin menjadi penjaga danau'}
-                            {option === 'B' && 'Karena ia ingin tahu bentuk tongkat dan percaya tongkat itu bisa membawa perubahan'}
-                            {option === 'C' && 'Karena ia takut danau akan hilang'}
-                            {option === 'D' && 'Karena ia ingin bermain di danau setiap hari'}
+                            {option === 'A' && 'Malam hari'}
+                            {option === 'B' && 'Pagi hari yang cerah'}
+                            {option === 'C' && 'Siang hari yang panas'}
+                            {option === 'D' && 'Sore hari'}
                           </span>
                         </div>
                       ))}
@@ -476,7 +486,7 @@ const Page = () => {
               >
                 {/* Soal 4 */}
                 <div style={{ marginBottom: '25px' }}>
-                  <p style={{ fontWeight: 'bold' }}>4. Bagaimana cara Bima menunjukkan rasa ingin tahunya terhadap tongkat ajaib?</p>
+                  <p style={{ fontWeight: 'bold' }}>4. Di mana mereka duduk setelah bermain bola?</p>
                   <div className="mt-2">
                     {['A', 'B', 'C', 'D'].map((option) => (
                       <div
@@ -486,10 +496,10 @@ const Page = () => {
                       >
                         <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['4'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                         <span>
-                          {option === 'A' && 'Ia menyelam langsung ke danau'}
-                          {option === 'B' && 'Ia bertanya kepada penjaga danau'}
-                          {option === 'C' && 'Ia duduk di tepi danau dan mengamati dengan sabar setiap sore'}
-                          {option === 'D' && 'Ia mengajak teman-temannya bermain di sekitar danau'}
+                          {option === 'A' && 'Di pinggir jalan'}
+                          {option === 'B' && 'Di rumah rina'}
+                          {option === 'C' && 'Di bawah pohon'}
+                          {option === 'D' && 'Di atas bangku taman'}
                         </span>
                       </div>
                     ))}
@@ -497,7 +507,7 @@ const Page = () => {
                 </div>
 
                 <div>
-                  <p style={{ fontWeight: 'bold' }}>5. Apa kemungkinan yang bisa terjadi jika Bima benar-benar menemukan tongkat ajaib tersebut?</p>
+                  <p style={{ fontWeight: 'bold' }}>5. Bagaimana perasaan Rina dan teman-temannya saat bermain di taman?</p>
                   <div className="mt-2">
                     {['A', 'B', 'C', 'D'].map((option) => (
                       <div
@@ -507,10 +517,10 @@ const Page = () => {
                       >
                         <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['5'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                         <span>
-                          {option === 'A' && 'Danau akan mengering'}
-                          {option === 'B' && 'Desa akan dihantui oleh penjaga danau'}
-                          {option === 'C' && 'Kehidupan desa bisa kembali makmur seperti dulu'}
-                          {option === 'D' && 'Bima akan pindah dari desa'}
+                          {option === 'A' && 'Takut dan gelisah'}
+                          {option === 'B' && 'Sedih dan bingung'}
+                          {option === 'C' && 'Marah dan kecewa'}
+                          {option === 'D' && 'Senang dan gembira'}
                         </span>
                       </div>
                     ))}

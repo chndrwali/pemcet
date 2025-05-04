@@ -8,9 +8,11 @@ import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { z } from 'zod';
 import { postQuiz } from '@/actions/postQuiz';
-import { Pause } from 'lucide-react';
+import { Home, Pause } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+  const router = useRouter();
   const [waktu, setWaktu] = useState(0);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
   const [step, setStep] = useState(1);
@@ -668,22 +670,40 @@ const Page = () => {
                 <h2 className="text-xl font-bold mb-2">{score >= 60 ? 'Selamat!' : 'Terus Berlatih!'}</h2>
                 <p>{score >= 60 ? 'Kamu telah berhasil menyelesaikan tes membaca dengan baik.' : 'Jangan menyerah, teruslah berlatih untuk meningkatkan kemampuan membacamu.'}</p>
               </div>
-
-              <button
-                onClick={() => setStep(1)}
-                style={{
-                  backgroundColor: '#5b2c0f',
-                  color: 'white',
-                  padding: '10px 30px',
-                  fontSize: '18px',
-                  border: 'none',
-                  borderRadius: '10px',
-                  cursor: 'pointer',
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
-                }}
-              >
-                Kembali ke Awal
-              </button>
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => setStep(1)}
+                  style={{
+                    backgroundColor: '#5b2c0f',
+                    color: 'white',
+                    padding: '10px 30px',
+                    fontSize: '18px',
+                    border: 'none',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                  }}
+                >
+                  Kembali ke Awal
+                </button>
+                <button
+                  onClick={() => router.push('/learning-materials')}
+                  style={{
+                    backgroundColor: '#5b2c0f',
+                    color: 'white',
+                    padding: '10px 30px',
+                    fontSize: '18px',
+                    border: 'none',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                  }}
+                  className="flex items-center"
+                >
+                  <Home className="mr-2" />
+                  Ke Menu
+                </button>
+              </div>
             </div>
           )}
         </form>
