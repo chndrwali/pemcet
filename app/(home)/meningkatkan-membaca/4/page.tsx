@@ -1,6 +1,6 @@
 'use client';
 
-import { postQuizOne } from '@/actions/postQuiz';
+import { postQuizFour } from '@/actions/postQuiz';
 import { Header } from '@/components/header/header';
 import { quizSchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -92,7 +92,7 @@ const Page = () => {
     };
 
     try {
-      const result = await postQuizOne(formData);
+      const result = await postQuizFour(formData);
       if (result.success) {
         console.log('Data berhasil disimpan:', result.data);
         setStep(5);

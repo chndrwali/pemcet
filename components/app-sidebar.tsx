@@ -1,6 +1,6 @@
 'use client';
 
-import { Book, BookOpen, Users } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { UserMenuFooter } from '@/app/(admin)/_components/userMenuFooter';
@@ -11,23 +11,29 @@ export function AppSidebar() {
   const pathname = usePathname();
   // Menu items.
   const items = [
+    // {
+    //   title: 'Murid',
+    //   url: '/admin/users',
+    //   icon: Users,
+    //   active: pathname === '/admin/users',
+    // },
+    // {
+    //   title: 'Test Membaca',
+    //   url: '/admin/test-reading',
+    //   icon: Book,
+    //   active: pathname === '/admin/test-reading',
+    // },
+    // {
+    //   title: 'Uji Pemahaman',
+    //   url: '/admin/exam',
+    //   icon: BookOpen,
+    //   active: pathname === '/admin/exam',
+    // },
     {
-      title: 'Murid',
-      url: '/admin/users',
-      icon: Users,
-      active: pathname === '/admin/users',
-    },
-    {
-      title: 'Test Membaca',
-      url: '/admin/test-reading',
-      icon: Book,
-      active: pathname === '/admin/test-reading',
-    },
-    {
-      title: 'Uji Pemahaman',
-      url: '/admin/exam',
+      title: 'Quiz Result',
+      url: '/admin/quiz',
       icon: BookOpen,
-      active: pathname === '/admin/exam',
+      active: pathname === '/admin/quiz',
     },
   ];
 
