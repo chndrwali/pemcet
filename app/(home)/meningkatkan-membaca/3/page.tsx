@@ -250,10 +250,11 @@ const Page = () => {
                   fontWeight: 'bold',
                   border: '9px solid #fff',
                   borderRadius: '20px',
-                  width: 'w-full',
+
                   margin: '0 auto 30px auto',
                   fontFamily: '"Comic Sans MS", cursive',
                 }}
+                className="w-fit"
               >
                 Latihan Meningkatkan Membaca Cepat
               </div>
@@ -268,25 +269,25 @@ const Page = () => {
               <div className="bg-white mx-auto h-[300px] rounded-[20px] pt-2 px-8  border-[5px] border-[#3e1f1f] whitespace-pre-wrap break-words overflow-hidden relative w-[1000px]">
                 {mulai ? (
                   <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'} text-justify`}>
-                    <h1 className="text-center text-[#3e1f1f]">Manfaat Olahraga untuk Kesehatan</h1>
-                    <div className="whitespace-pre-wrap break-words w-full pr-10">
+                    <h1 className="text-center text-[#3e1f1f] font-bold">Manfaat Olahraga untuk Kesehatan</h1>
+                    <div className="whitespace-pre-wrap break-words w-full pr-12">
                       {' '}
                       <p>
                         Olahraga sangat penting bagi kesehatan tubuh. Dengan berolahraga, tubuh menjadi lebih kuat dan bugar. Selain itu, olahraga membantu menjaga daya tahan tubuh agar tidak mudah sakit. Jika tubuh sehat, kita bisa
                         melakukan aktivitas sehari-hari dengan lebih baik.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Oleh karena itu, kita harus rajin berolahraga setiap hari. Ada banyak jenis olahraga yang bisa dilakukan, seperti berlari, bersepeda, berenang, dan bermain bola. Olahraga juga bisa dilakukan di rumah, seperti senam
                         atau lompat tali.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Dengan berolahraga secara rutin, tubuh menjadi lebih sehat dan peredaran darah menjadi lancar. Tubuh juga terasa lebih segar dan berenergi sepanjang hari. Selain menyehatkan tubuh, olahraga juga baik untuk pikiran.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Saat berolahraga, tubuh mengeluarkan keringat dan membuat pikiran lebih rileks. Hal ini dapat mengurangi stres dan membuat kita lebih semangat dalam belajar. Jika pikiran segar, kita bisa lebih fokus saat mengerjakan
                         tugas sekolah.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Olahraga juga dapat dilakukan bersama teman atau keluarga. Bermain bola, bersepeda, atau berjalan kaki bersama akan terasa lebih menyenangkan. Selain tubuh sehat, hubungan dengan teman dan keluarga juga semakin erat.
                         Agar tetap sehat, kita harus mengimbangi olahraga dengan pola makan yang baik dan istirahat yang cukup. Dengan gaya hidup sehat, tubuh akan lebih kuat dan tidak mudah sakit. Mari biasakan olahraga setiap hari agar
                         tubuh tetap sehat dan bugar!
@@ -296,7 +297,10 @@ const Page = () => {
                 ) : (
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
                     <button
-                      onClick={() => setMulai(true)}
+                      onClick={() => {
+                        setMulai(true);
+                        setWaktu(35);
+                      }}
                       style={{
                         backgroundColor: '#ffc107',
                         color: '#000',

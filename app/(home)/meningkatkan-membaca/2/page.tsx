@@ -276,15 +276,15 @@ const Page = () => {
                         Kebersihan lingkungan sangat penting bagi kehidupan. Lingkungan yang bersih membuat kita sehat dan nyaman. Oleh karena itu, kita harus menjaga kebersihan di rumah, sekolah, dan lingkungan sekitar agar tetap asri dan
                         indah.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Salah satu cara menjaga kebersihan adalah membuang sampah pada tempatnya. Sampah yang berserakan dapat menimbulkan bau tidak sedap dan menjadi sarang penyakit. Kita juga harus memilah sampah organik dan anorganik
                         agar mudah didaur ulang.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Jika sampah dikelola dengan baik, lingkungan akan tetap bersih dan sehat. Selain itu, kita perlu membersihkan halaman rumah, menyapu lantai, dan mengepel ruangan secara rutin. Jika rumah bersih, keluarga akan lebih
                         sehat.
                       </p>
-                      <p>
+                      <p className="mt-4">
                         Di sekolah, kita harus menjaga kebersihan kelas dengan tidak membuang sampah sembarangan dan selalu membersihkan meja serta kursi agar tetap rapi. Menanam pohon dan merawat tanaman juga membantu menjaga lingkungan
                         tetap hijau dan segar. Jika semua orang peduli kebersihan, bumi akan menjadi tempat tinggal yang lebih nyaman. Mari biasakan hidup bersih dan sehat!
                       </p>

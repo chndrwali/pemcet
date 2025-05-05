@@ -11,7 +11,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const Page = () => {
-  const [waktu, setWaktu] = useState(35);
+  const [waktu, setWaktu] = useState(40);
   const [mulai, setMulai] = useState(false); // Awalnya belum mulai
   const [step, setStep] = useState(1);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
@@ -300,7 +300,7 @@ const Page = () => {
                     <button
                       onClick={() => {
                         setMulai(true);
-                        setWaktu(35);
+                        setWaktu(40);
                       }}
                       style={{
                         backgroundColor: '#ffc107',
