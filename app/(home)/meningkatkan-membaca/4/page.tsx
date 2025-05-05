@@ -270,18 +270,26 @@ const Page = () => {
                 {mulai ? (
                   <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'}`}>
                     <h1 className="text-center text-[#3e1f1f]">Harta Karun di Bukit Senja</h1>
-                    <p className="whitespace-pre-wrap break-words w-full pr-10">
-                      {' '}
-                      Di sebuah dusun yang dikelilingi oleh ladang dan kebun teh, terdapat sebuah bukit bernama Bukit Senja. Bukit itu terkenal karena pemandangannya yang indah saat matahari terbenam. Namun bukan hanya keindahannya yang
-                      dikenal orang, melainkan juga sebuah legenda yang diwariskan dari generasi ke generasi. Konon, di puncak bukit pernah tinggal seorang pertapa tua yang menyimpan sebuah kotak misterius berisi harta karun. Kotak itu
-                      dikatakan hanya bisa ditemukan oleh orang berhati tulus. Harta tersebut bukan sekadar emas atau permata, tetapi sesuatu yang bisa membawa kesejahteraan bagi seluruh dusun. Setelah sang pertapa meninggal, tidak ada yang
-                      berhasil menemukan kotak itu. Sejak saat itu, masyarakat percaya bahwa kotak itu hanya akan muncul pada waktu yang tepat dan kepada orang yang benar-benar layak. Seorang anak bernama Saka sering mendaki Bukit Senja
-                      setiap sore. Ia duduk di bawah pohon besar di puncak bukit sambil menikmati hembusan angin dan warna langit yang berubah-ubah. Dalam diam, ia selalu membayangkan bentuk kotak itu. Apakah terbuat dari kayu ukiran kuno?
-                      Ataukah dilapisi logam mulia? Suatu hari, hujan turun deras hingga malam. Keesokan paginya, saat tanah masih basah dan udara dipenuhi kabut tipis, Saka menemukan sebuah tonjolan aneh di balik akar pohon besar. Dengan
-                      hati-hati, ia mengorek tanah dan menemukan sebuah benda persegi tertutup lumut. Jantungnya berdegup kencang. Ia percaya bahwa rahasia Bukit Senja hampir terungkap. Jika benar itu kotak legenda, mungkin seluruh dusun
-                      akan mengalami perubahan besar. Namun, apakah itu benar kotak sang pertapa atau hanya peti biasa yang tertinggal zaman dulu? Dengan rasa ingin tahu yang besar, Saka bertekad untuk menggali lebih dalam. Ia tahu,
-                      penjelajahannya baru dimulai. Ia pulang dengan langkah cepat, menyusun rencana agar besok ia bisa kembali dengan alat yang tepat.
-                    </p>
+                    <div className="whitespace-pre-wrap break-words w-full pr-10">
+                      <p>
+                        Di sebuah dusun yang dikelilingi oleh ladang dan kebun teh, terdapat sebuah bukit bernama Bukit Senja. Bukit itu terkenal karena pemandangannya yang indah saat matahari terbenam. Namun bukan hanya keindahannya yang
+                        dikenal orang, melainkan juga sebuah legenda yang diwariskan dari generasi ke generasi.
+                      </p>
+                      <p>Konon, di puncak bukit pernah tinggal seorang pertapa tua yang menyimpan sebuah kotak misterius berisi harta karun. Kotak itu dikatakan hanya bisa ditemukan oleh orang berhati tulus.</p>
+                      <p>Harta tersebut bukan sekadar emas atau permata, tetapi sesuatu yang bisa membawa kesejahteraan bagi seluruh dusun. Setelah sang pertapa meninggal, tidak ada yang berhasil menemukan kotak itu.</p>
+                      <p>Sejak saat itu, masyarakat percaya bahwa kotak itu hanya akan muncul pada waktu yang tepat dan kepada orang yang benar-benar layak. Seorang anak bernama Saka sering mendaki Bukit Senja setiap sore.</p>
+                      <p>
+                        Ia duduk di bawah pohon besar di puncak bukit sambil menikmati hembusan angin dan warna langit yang berubah-ubah. Dalam diam, ia selalu membayangkan bentuk kotak itu. Apakah terbuat dari kayu ukiran kuno? Ataukah
+                        dilapisi logam mulia? Suatu hari, hujan turun deras hingga malam.
+                      </p>
+                      Keesokan paginya, saat tanah masih basah dan udara dipenuhi kabut tipis, Saka menemukan sebuah tonjolan aneh di balik akar pohon besar. Dengan hati-hati, ia mengorek tanah dan menemukan sebuah benda persegi tertutup
+                      lumut.
+                      <p>
+                        Jantungnya berdegup kencang. Ia percaya bahwa rahasia Bukit Senja hampir terungkap. Jika benar itu kotak legenda, mungkin seluruh dusun akan mengalami perubahan besar. Namun, apakah itu benar kotak sang pertapa atau
+                        hanya peti biasa yang tertinggal zaman dulu? Dengan rasa ingin tahu yang besar, Saka bertekad untuk menggali lebih dalam. Ia tahu, penjelajahannya baru dimulai. Ia pulang dengan langkah cepat, menyusun rencana agar
+                        besok ia bisa kembali dengan alat yang tepat.
+                      </p>
+                    </div>
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
@@ -310,8 +318,8 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Submit
+                  <button onClick={handleSelesaiMembaca} className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
+                    <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
                   </button>
                 </div>
               )}

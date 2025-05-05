@@ -30,7 +30,7 @@ const Page = () => {
     <section className={`relative  min-h-screen bg-center bg-cover ${step === 1 ? 'bg-doa' : 'bg-deskripsi'} z-20`}>
       <Header />
       {step === 1 && (
-        <motion.div style={{ position: 'relative', marginBottom: '10px' }} initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: 'easeOut' }}>
+        <motion.div style={{ position: 'relative', marginBottom: '10px' }} initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: 'easeOut' }} className="flex items-center justify-center">
           {/* Karakter */}
           <motion.div initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}>
             <Image src="/pem.png" alt="Karakter" width={160} height={160} style={{ width: '160px' }} />
@@ -42,9 +42,6 @@ const Page = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             style={{
-              position: 'absolute',
-              top: '10px',
-              left: '150px',
               backgroundColor: 'white',
               border: '4px solid #333',
               borderRadius: '30px',

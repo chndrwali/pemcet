@@ -67,16 +67,15 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-4/5 h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
-              <div className={`absolute w-full text-[1.2rem]  text-center ${waktu === 0 ? 'animate-none' : 'animate-scrollDown'}`}>
+              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown'}`}>
                 <h1 className="font-bold text-center">Kucing Hitam yang Bijaksana</h1>
-                <p>Dlahu satau wktu, hduiplah sseekor kcoong brwarna htam di sebuat htuatn.</p>
-                <p>Kcoong tbreseut snagat cpadik dngean mlcari mknaan di mlama hrai.</p>
-                <p>Sautu hiari, ia mnemukan sbeuah bkaul ynag bsurir hkamd dan rtoi.</p>
-                <p>Ia mmberikn mnakanan itu kpada tman-tmannya dngan snagat bhgia.</p>
-                <p>Kcoong itu dketahui mnyuka tlong mnolong dan slalu mbuat sgala mhahluk di htuan trsebut snang.</p>
-                <p>Apda akhrnya, kcoong htam itupun mjadi pmpinan di htuan trsbt krna kbijakannya.</p>
+                <div className="whitespace-pre-wrap break-words w-full pr-10">
+                  Dlahu satau wktu, hduiplah sseekor kcoong brwarna htam di sebuat htuatn. Kcoong tbreseut snagat cpadik dngean mlcari mknaan di mlama hrai. Sautu hiari, ia mnemukan sbeuah bkaul ynag bsurir hkamd dan rtoi. Ia mmberikn
+                  mnakanan itu kpada tman-tmannya dngan snagat bhgia. Kcoong itu dketahui mnyuka tlong mnolong dan slalu mbuat sgala mhahluk di htuan trsebut snang. Apda akhrnya, kcoong htam itupun mjadi pmpinan di htuan trsbt krna
+                  kbijakannya.
+                </div>
               </div>
             ) : (
               <div className="flex flex-col items-center p-4">
@@ -127,7 +126,7 @@ const Page = () => {
               textAlign: 'center',
             }}
           >
-            Inilah Isi Teks Asli Diatas
+            Inilah Isi Teks Yang Baru Saja Di Baca
           </div>
 
           <div

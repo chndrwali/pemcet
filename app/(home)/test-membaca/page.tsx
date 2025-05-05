@@ -324,7 +324,7 @@ const Page = () => {
                   marginTop: '30px',
                   color: '#333',
                   width: '100%',
-                  maxWidth: '800px',
+                  maxWidth: '1000px',
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
@@ -332,26 +332,19 @@ const Page = () => {
                 {mulai ? (
                   <div className="text-justify ">
                     <h1 className="font-bold text-center">Rahasia Danau Biru</h1>
-                    <p>Di sebuah desa kecil yang dikelilingi pegunungan hijau, terdapat danau berwarna biru yang jernih dan tenang.,</p>
-                    <p>Penduduk desa menyebutnya Danau Biru dan percaya bahwa danau itu menyimpan rahasia besar.,</p>
-                    <p>Konon, di dasar danau tersembunyi tongkat ajaib yang bisa membawa keberuntungan bagi siapa pun yang menemukannya.,</p>
-                    <p>Seorang anak bernama Bima tinggal di desa itu bersama keluarganya.,</p>
-                    <p>Bima dikenal sebagai anak yang penasaran dan suka bertanya.,</p>
-                    <p>Ia sering mendengar cerita tentang tongkat ajaib dari para orang tua di desa.,</p>
-                    <p>Bima mulai berpikir, apakah benar tongkat itu ada? Dan jika ada, seperti apa bentuknya?,</p>
-                    <p>Setiap sore, Bima duduk di tepi danau, mengamati airnya yang tenang dan biru.,</p>
-                    <p>Ia percaya, suatu hari ia bisa menemukan tongkat itu dan membantu desanya menjadi makmur kembali.,</p>
-                    <p>Bagi Bima, Danau Biru bukan hanya tempat yang indah, tapi juga penuh misteri dan harapan.,</p>
-                    <p>Ia tidak pernah bosan menatap danau itu, berharap bisa menemukan sesuatu yang luar biasa.,</p>
-                    <p>Hari demi hari berlalu, namun Bima tetap sabar dan penuh semangat.,</p>
-                    <p>Ia percaya bahwa rasa ingin tahu adalah awal dari penemuan besar.,</p>
-                    <p>Penduduk desa pun mulai melihat kesungguhan Bima.,</p>
-                    <p>Beberapa mulai membantu dengan memberi cerita-cerita lama tentang danau itu.,</p>
-                    <p>Bima semakin yakin bahwa tongkat itu bukan sekadar dongeng.,</p>
-                    <p>Jika tongkat itu benar-benar ada, mungkin itu bisa membawa desa mereka kembali sejahtera seperti dulu.,</p>
-                    <p>Danau Biru pun menjadi saksi dari mimpi dan semangat seorang anak yang tak pernah menyerah.,</p>
-                    <p>Apakah Bima akan menemukan tongkat ajaib itu? Cerita ini belum berakhir…,</p>
-                    <p>Tapi satu hal yang pasti: keberanian dan rasa ingin tahu adalah kekuatan sejati.,</p>
+                    <p>Di sebuah desa kecil yang dikelilingi pegunungan hijau, terdapat danau berwarna biru yang jernih dan tenang. Penduduk desa menyebutnya Danau Biru dan percaya bahwa danau itu menyimpan rahasia besar.</p>
+                    <p>Konon, di dasar danau tersembunyi tongkat ajaib yang bisa membawa keberuntungan bagi siapa pun yang menemukannya. Seorang anak bernama Bima tinggal di desa itu bersama keluarganya.</p>
+                    <p>
+                      Bima dikenal sebagai anak yang penasaran dan suka bertanya.Ia sering mendengar cerita tentang tongkat ajaib dari para orang tua di desa.Bima mulai berpikir, apakah benar tongkat itu ada? Dan jika ada, seperti apa
+                      bentuknya?,
+                    </p>
+                    <p>Setiap sore, Bima duduk di tepi danau, mengamati airnya yang tenang dan biru.Ia percaya, suatu hari ia bisa menemukan tongkat itu dan membantu desanya menjadi makmur kembali.,</p>
+                    <p>Bagi Bima, Danau Biru bukan hanya tempat yang indah, tapi juga penuh misteri dan harapan. Ia tidak pernah bosan menatap danau itu, berharap bisa menemukan sesuatu yang luar biasa.,</p>
+                    <p>Hari demi hari berlalu, namun Bima tetap sabar dan penuh semangat.Ia percaya bahwa rasa ingin tahu adalah awal dari penemuan besar.</p>
+                    <p>Penduduk desa pun mulai melihat kesungguhan Bima. Beberapa mulai membantu dengan memberi cerita-cerita lama tentang danau itu.</p>
+                    <p>Bima semakin yakin bahwa tongkat itu bukan sekadar dongeng.Jika tongkat itu benar-benar ada, mungkin itu bisa membawa desa mereka kembali sejahtera seperti dulu.,</p>
+                    <p>Danau Biru pun menjadi saksi dari mimpi dan semangat seorang anak yang tak pernah menyerah.Apakah Bima akan menemukan tongkat ajaib itu? Cerita ini belum berakhir…,</p>
+                    <p>Tapi satu hal yang pasti: keberanian dan rasa ingin tahu adalah kekuatan sejati.</p>
                   </div>
                 ) : (
                   <div className="flex flex-col">

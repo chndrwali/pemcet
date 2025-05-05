@@ -252,10 +252,10 @@ const Page = () => {
                   fontWeight: 'bold',
                   border: '9px solid #fff',
                   borderRadius: '20px',
-                  width: 'w-fit',
                   margin: '0 auto 30px auto',
                   fontFamily: '"Comic Sans MS", cursive',
                 }}
+                className="w-fit"
               >
                 Latihan Meningkatkan Membaca Cepat
               </div>
@@ -269,15 +269,26 @@ const Page = () => {
               {/* Running Text Box */}
               <div className="bg-white mx-auto h-[300px] rounded-[20px] pt-2 px-8  border-[5px] border-[#3e1f1f] whitespace-pre-wrap break-words overflow-hidden relative w-[1000px]">
                 {mulai ? (
-                  <div className={`absolute w-full text-[1.2rem]  ${!mulai ? 'animate-none' : 'animate-scrollDown'}`}>
+                  <div className={`absolute w-full text-[1.2rem]  ${!mulai ? 'animate-none' : 'animate-scrollDown'} text-justify`}>
                     <h1 className="text-center text-[#3e1f1f] font-bold mb-4">Menjaga Kebersihan Lingkungan</h1>
-                    <p className="whitespace-pre-wrap break-words w-full pr-4 font-semibold">
-                      Kebersihan lingkungan sangat penting bagi kehidupan. Lingkungan yang bersih membuat kita sehat dan nyaman. Oleh karena itu, kita harus menjaga kebersihan di rumah, sekolah, dan lingkungan sekitar agar tetap asri dan
-                      indah. Salah satu cara menjaga kebersihan adalah membuang sampah pada tempatnya. Sampah yang berserakan dapat menimbulkan bau tidak sedap dan menjadi sarang penyakit. Kita juga harus memilah sampah organik dan
-                      anorganik agar mudah didaur ulang. Jika sampah dikelola dengan baik, lingkungan akan tetap bersih dan sehat. Selain itu, kita perlu membersihkan halaman rumah, menyapu lantai, dan mengepel ruangan secara rutin. Jika
-                      rumah bersih, keluarga akan lebih sehat. Di sekolah, kita harus menjaga kebersihan kelas dengan tidak membuang sampah sembarangan dan selalu membersihkan meja serta kursi agar tetap rapi. Menanam pohon dan merawat
-                      tanaman juga membantu menjaga lingkungan tetap hijau dan segar. Jika semua orang peduli kebersihan, bumi akan menjadi tempat tinggal yang lebih nyaman. Mari biasakan hidup bersih dan sehat!
-                    </p>
+                    <div className="whitespace-pre-wrap break-words w-full pr-10 font-semibold">
+                      <p>
+                        Kebersihan lingkungan sangat penting bagi kehidupan. Lingkungan yang bersih membuat kita sehat dan nyaman. Oleh karena itu, kita harus menjaga kebersihan di rumah, sekolah, dan lingkungan sekitar agar tetap asri dan
+                        indah.
+                      </p>
+                      <p>
+                        Salah satu cara menjaga kebersihan adalah membuang sampah pada tempatnya. Sampah yang berserakan dapat menimbulkan bau tidak sedap dan menjadi sarang penyakit. Kita juga harus memilah sampah organik dan anorganik
+                        agar mudah didaur ulang.
+                      </p>
+                      <p>
+                        Jika sampah dikelola dengan baik, lingkungan akan tetap bersih dan sehat. Selain itu, kita perlu membersihkan halaman rumah, menyapu lantai, dan mengepel ruangan secara rutin. Jika rumah bersih, keluarga akan lebih
+                        sehat.
+                      </p>
+                      <p>
+                        Di sekolah, kita harus menjaga kebersihan kelas dengan tidak membuang sampah sembarangan dan selalu membersihkan meja serta kursi agar tetap rapi. Menanam pohon dan merawat tanaman juga membantu menjaga lingkungan
+                        tetap hijau dan segar. Jika semua orang peduli kebersihan, bumi akan menjadi tempat tinggal yang lebih nyaman. Mari biasakan hidup bersih dan sehat!
+                      </p>
+                    </div>
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
@@ -306,8 +317,8 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Submit
+                  <button onClick={handleSelesaiMembaca} className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
+                    <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
                   </button>
                 </div>
               )}
@@ -380,10 +391,10 @@ const Page = () => {
                         >
                           <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-2 ${selectedAnswers['2'] === option ? 'bg-amber-500 text-white' : 'border border-gray-400'}`}>{option}</div>
                           <span>
-                            {option === 'A' && 'Tongkat itu bisa mengobati penyakit'}
-                            {option === 'B' && 'Siapa pun yang menemukannya akan mendapat keberuntungan'}
-                            {option === 'C' && 'Tongkat itu bisa memanggil hujan'}
-                            {option === 'D' && 'Tongkat itu bisa membuat danau menjadi besar'}
+                            {option === 'A' && 'Di tempat kerja saja'}
+                            {option === 'B' && 'Di hutan dan gunung'}
+                            {option === 'C' && 'Di rumah, sekolah dan lingkungan sekitar'}
+                            {option === 'D' && 'Di tempat wisata saja'}
                           </span>
                         </div>
                       ))}

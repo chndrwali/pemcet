@@ -267,18 +267,31 @@ const Page = () => {
               {/* Running Text Box */}
               <div className="bg-white mx-auto h-[300px] rounded-[20px] pt-2 px-8  border-[5px] border-[#3e1f1f] whitespace-pre-wrap break-words overflow-hidden relative w-[1000px]">
                 {mulai ? (
-                  <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'}`}>
+                  <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'} text-justify`}>
                     <h1 className="text-center text-[#3e1f1f]">Manfaat Olahraga untuk Kesehatan</h1>
-                    <p className="whitespace-pre-wrap break-words w-full pr-10">
+                    <div className="whitespace-pre-wrap break-words w-full pr-10">
                       {' '}
-                      Olahraga sangat penting bagi kesehatan tubuh. Dengan berolahraga, tubuh menjadi lebih kuat dan bugar. Selain itu, olahraga membantu menjaga daya tahan tubuh agar tidak mudah sakit. Jika tubuh sehat, kita bisa melakukan
-                      aktivitas sehari-hari dengan lebih baik. Oleh karena itu, kita harus rajin berolahraga setiap hari. Ada banyak jenis olahraga yang bisa dilakukan, seperti berlari, bersepeda, berenang, dan bermain bola. Olahraga juga
-                      bisa dilakukan di rumah, seperti senam atau lompat tali. Dengan berolahraga secara rutin, tubuh menjadi lebih sehat dan peredaran darah menjadi lancar. Tubuh juga terasa lebih segar dan berenergi sepanjang hari. Selain
-                      menyehatkan tubuh, olahraga juga baik untuk pikiran. Saat berolahraga, tubuh mengeluarkan keringat dan membuat pikiran lebih rileks. Hal ini dapat mengurangi stres dan membuat kita lebih semangat dalam belajar. Jika
-                      pikiran segar, kita bisa lebih fokus saat mengerjakan tugas sekolah. Olahraga juga dapat dilakukan bersama teman atau keluarga. Bermain bola, bersepeda, atau berjalan kaki bersama akan terasa lebih menyenangkan. Selain
-                      tubuh sehat, hubungan dengan teman dan keluarga juga semakin erat. Agar tetap sehat, kita harus mengimbangi olahraga dengan pola makan yang baik dan istirahat yang cukup. Dengan gaya hidup sehat, tubuh akan lebih kuat
-                      dan tidak mudah sakit. Mari biasakan olahraga setiap hari agar tubuh tetap sehat dan bugar!
-                    </p>
+                      <p>
+                        Olahraga sangat penting bagi kesehatan tubuh. Dengan berolahraga, tubuh menjadi lebih kuat dan bugar. Selain itu, olahraga membantu menjaga daya tahan tubuh agar tidak mudah sakit. Jika tubuh sehat, kita bisa
+                        melakukan aktivitas sehari-hari dengan lebih baik.
+                      </p>
+                      <p>
+                        Oleh karena itu, kita harus rajin berolahraga setiap hari. Ada banyak jenis olahraga yang bisa dilakukan, seperti berlari, bersepeda, berenang, dan bermain bola. Olahraga juga bisa dilakukan di rumah, seperti senam
+                        atau lompat tali.
+                      </p>
+                      <p>
+                        Dengan berolahraga secara rutin, tubuh menjadi lebih sehat dan peredaran darah menjadi lancar. Tubuh juga terasa lebih segar dan berenergi sepanjang hari. Selain menyehatkan tubuh, olahraga juga baik untuk pikiran.
+                      </p>
+                      <p>
+                        Saat berolahraga, tubuh mengeluarkan keringat dan membuat pikiran lebih rileks. Hal ini dapat mengurangi stres dan membuat kita lebih semangat dalam belajar. Jika pikiran segar, kita bisa lebih fokus saat mengerjakan
+                        tugas sekolah.
+                      </p>
+                      <p>
+                        Olahraga juga dapat dilakukan bersama teman atau keluarga. Bermain bola, bersepeda, atau berjalan kaki bersama akan terasa lebih menyenangkan. Selain tubuh sehat, hubungan dengan teman dan keluarga juga semakin erat.
+                        Agar tetap sehat, kita harus mengimbangi olahraga dengan pola makan yang baik dan istirahat yang cukup. Dengan gaya hidup sehat, tubuh akan lebih kuat dan tidak mudah sakit. Mari biasakan olahraga setiap hari agar
+                        tubuh tetap sehat dan bugar!
+                      </p>
+                    </div>
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
@@ -304,8 +317,8 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Submit
+                  <button onClick={handleSelesaiMembaca} className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
+                    <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
                   </button>
                 </div>
               )}

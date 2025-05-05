@@ -304,11 +304,11 @@ const Page = () => {
                 </div>
               )}
               {/* Running Text Box */}
-              <div className="bg-white mx-auto h-[300px] rounded-[20px] pt-2 px-8  border-[5px] border-[#3e1f1f] whitespace-pre-wrap break-words overflow-hidden relative w-[1000px]">
+              <div className="bg-white mx-auto h-[300px] rounded-[20px] pt-2 px-8  border-[5px] border-[#3e1f1f] whitespace-pre-wrap break-words overflow-hidden relative w-[1000px] text-justify">
                 {mulai ? (
                   <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'}`}>
                     <h1 className="text-center text-[#3e1f1f]">Bermain di Taman</h1>
-                    <p className="whitespace-pre-wrap break-words w-full pr-4">
+                    <p className="whitespace-pre-wrap break-words w-full pr-10">
                       {' '}
                       Pada pagi hari yang cerah, Rina dan teman-temannya pergi ke taman. Mereka membawa bola dan bermain sepak bola. Di taman, ada banyak pohon yang rindang, bunga yang berwarna-warni, dan burung-burung yang berkicau riang.
                       Rina sangat senang karena dia bisa bermain dengan bebas. Teman-temannya, Aji dan Siti, juga tampak sangat gembira. Mereka bermain bersama, berlari ke sana ke mari, dan saling memberi semangat. Setelah bermain bola,
@@ -344,8 +344,8 @@ const Page = () => {
               {/* Tombol Next */}
               {mulai && (
                 <div className="flex items-center justify-end mt-4 gap-2">
-                  <button onClick={handleSelesaiMembaca} className="px-4 py-2 bg-[#3e1f1f] rounded-xl text-white">
-                    Submit
+                  <button onClick={handleSelesaiMembaca} className="absolute bottom-[30px] right-[30px] w-[60px] h-[60px]">
+                    <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
                   </button>
                 </div>
               )}

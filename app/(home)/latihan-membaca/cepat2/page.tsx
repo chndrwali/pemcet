@@ -216,7 +216,7 @@ const Page = () => {
               menambah kosakata. Semakin banyak kata yang kita baca, semakin kaya bahasa yang kita kuasai. Ini membantu kita berbicara dan menulis dengan lebih baik. Selain itu, membaca juga bisa meningkatkan konsentrasi. Saat membaca, kita
               harus fokus agar memahami isi bacaan. Ini melatih otak untuk lebih berkonsentrasi dalam berbagai aktivitas. Membaca juga bisa menjadi hiburan yang menyenangkan.
             </p>
-            <p>
+            <p className="mt-4">
               Ada banyak jenis buku yang bisa dipilih, seperti cerita petualangan, dongeng, atau buku komik. Dengan membaca, kita bisa berimajinasi dan masuk ke dunia cerita yang menarik. Tidak hanya itu, membaca juga bisa membantu
               meningkatkan daya ingat. Saat membaca, kita mengingat banyak informasi, seperti nama tokoh, alur cerita, dan fakta penting. Ini membantu melatih memori kita. Agar membaca lebih menyenangkan, pilihlah buku yang sesuai dengan
               minat kita. Bacalah di tempat yang nyaman dan hindari gangguan. Jika kita membaca secara rutin, lama-lama akan menjadi kebiasaan yang bermanfaat. Jadi, mari biasakan membaca setiap hari. Dengan membaca, kita bisa menjadi lebih
