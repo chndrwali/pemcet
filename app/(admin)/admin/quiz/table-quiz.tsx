@@ -101,7 +101,7 @@ export const TableQuiz = ({ quiz }: TableQuizProps) => {
         <div className="flex items-center  px-4 py-3 text-xs font-semibold tracking-wide text-foreground/80 uppercase border-t bg-background">
           <span className="flex mt-2 sm:mt-auto">
             <nav aria-label="Table navigation">
-              <ul className="inline-flex items-center">
+              <ul className="inline-flex items-center gap-2">
                 {Array.from({ length: Math.ceil(totalItems / pagination.itemsPerPage) }).map((_, index) => (
                   <li key={index}>
                     <Button
