@@ -268,7 +268,7 @@ const Page = () => {
               {/* Running Text Box */}
               <div className="bg-white mx-auto h-[300px] rounded-[20px] pt-2 px-8  border-[5px] border-[#3e1f1f] whitespace-pre-wrap break-words overflow-hidden relative w-[1000px]">
                 {mulai ? (
-                  <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown'} text-justify`}>
+                  <div className={`absolute w-full text-[1.2rem] font-bold ${!mulai ? 'animate-none' : 'animate-scrollDown2'} text-justify`} style={{ animationDuration: '35s', animationFillMode: 'forwards' }}>
                     <h1 className="text-center text-[#3e1f1f] font-bold">Manfaat Olahraga untuk Kesehatan</h1>
                     <div className="whitespace-pre-wrap break-words w-full pr-12">
                       {' '}

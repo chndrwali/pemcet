@@ -22,7 +22,7 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
       return { error: 'Pengguna tidak ditemukan.' };
     }
 
-    const redirectTo = user.role === 'ADMIN' ? '/admin/users' : '/doa';
+    const redirectTo = user.role === 'ADMIN' ? '/admin/quiz' : '/doa';
 
     await signIn('credentials', {
       email,

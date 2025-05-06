@@ -15,10 +15,16 @@ const config: Config = {
           '0%': { top: '100%' },
           '100%': { top: '-100%' },
         },
+        scrollDown2: {
+          '0%': { top: '100%' },
+          '100%': { top: '-200%' },
+        },
       },
       animation: {
         shine: 'shine 8s ease-in-out infinite',
         scrollDown: 'scrollDown 30s linear forwards',
+        scrollDown2: 'scrollDown2 35s linear forwards',
+        scrollDown3: 'scrollDown2 40s linear forwards',
       },
       colors: {
         darkPurple: '#2d0131',

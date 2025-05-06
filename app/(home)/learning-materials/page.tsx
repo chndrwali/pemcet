@@ -24,7 +24,7 @@ const LearningMaterialsPage = async () => {
             fontFamily: '"Comic Sans MS", cursive',
           }}
         >
-          Menu Materi
+          Menu Utama
         </div>
         <NavigationMaterial />
       </div>
