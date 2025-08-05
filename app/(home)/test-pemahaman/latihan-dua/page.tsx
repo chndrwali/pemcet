@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(40);
+  const [waktu, setWaktu] = useState(35);
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -16,6 +16,7 @@ const Page = () => {
     two: '',
     three: '',
     four: '',
+    five: '',
   });
 
   const [answersTwo, setAnswersTwo] = useState({
@@ -23,22 +24,21 @@ const Page = () => {
     two: '',
     three: '',
     four: '',
-    five: '',
   });
 
   const correctAnswers = {
-    one: 'Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.',
-    two: 'Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar.',
-    three: 'Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak.',
-    four: 'Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan.',
+    one: 'Ia tahu bahwa saat hujan datang, mencari makanan lebih sulit.',
+    two: 'Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.',
+    three: 'Sejak kejadian itu, para semut mulai berubah.',
+    four: 'Semut kecil pun tidak menyimpan dendam.',
+    five: 'Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.',
   };
 
   const correctAnswers2 = {
-    one: 'Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum.',
-    two: 'Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.',
-    three: 'Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar.',
-    four: 'Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak.',
-    five: 'Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan.',
+    one: 'Ia tahu bahwa saat hujan datang, mencari makanan lebih sulit.',
+    two: 'Dengan senyum, semut berkata, "Aku tidak bisa memberi banyak, tapi aku bisa berbagi sedikit."',
+    three: 'Sejak kejadian itu, para semut mulai berubah.',
+    four: 'Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.',
   };
 
   const isCorrect = (key: keyof typeof answers) => {
@@ -60,7 +60,7 @@ const Page = () => {
 
   useEffect(() => {
     if (step === 1 || step === 2 || step === 4) {
-      setWaktu(40);
+      setWaktu(35);
       setMulai(false);
     }
   }, [step]);
@@ -69,7 +69,7 @@ const Page = () => {
     if (step < 5) {
       setStep(step + 1);
     } else {
-      router.push('/test-pemahaman/latihan-dua');
+      router.push('/test-pemahaman/latihan-tiga');
     }
   };
 
@@ -100,7 +100,7 @@ const Page = () => {
               fontFamily: '"Comic Sans MS", cursive',
             }}
           >
-            Cerita 1
+            Cerita 2
           </div>
           {/* Info dan Timer */}
           {mulai && (
@@ -113,25 +113,22 @@ const Page = () => {
           {/* Running Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
-              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
-                <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
+              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown2'}`}>
+                <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan
-                    berwarna cokelat. Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.
+                    Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya. Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. Teman-temannya
+                    mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah
+                    menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot; Kancil duduk di bawah
-                    pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum perlahan dan merasa segar.
+                    Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku
+                    bisa berbagi sedikit.&quot; Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot; Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam
-                    bertindak. Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
-                  </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan
-                    ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang cerdik, tetapi juga bijak dalam
-                    bersikap.
+                    Sejak kejadian itu, para semut mulai berubah. Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak menyimpan dendam. Ia justru senang
+                    karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba, semua semut
+                    sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.
                   </p>
                 </div>
               </div>
@@ -198,26 +195,23 @@ const Page = () => {
           {/* Running Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
-              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
-                <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
+              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown2'}`}>
+                <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan
-                    berwarna cokelat. <span className="text-red-600">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
+                    Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
+                    <span className="text-red-600"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil
+                    bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
-                    <span className="text-red-600">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum
-                    perlahan dan merasa segar.
+                    Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku
+                    bisa berbagi sedikit.&quot; <span className="text-red-600"> Mereka pun belajar bahwa kerja keras dan perencanaan itu penting. </span>
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot;{' '}
-                    <span className="text-red-600">Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
-                  </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    <span className="text-red-600"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat.
-                    Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang
-                    cerdik, tetapi juga bijak dalam bersikap.
+                    <span className="text-red-600"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti.{' '}
+                    <span className="text-red-600">Semut kecil pun tidak menyimpan dendam.</span> Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling
+                    mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba, semua semut sudah siap.
+                    <span className="text-red-600"> Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
                   </p>
                 </div>
               </div>
@@ -281,20 +275,23 @@ const Page = () => {
 
           {/* Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[360px] rounded-[20px] p-4 border-[5px] border-[#3e1f1f] overflow-y-auto overflow-x-hidden text-[1.2rem]  space-y-4">
+            <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
+
             <p className="indent-6">
-              Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan berwarna
-              cokelat.{' '}
+              Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
               <input
                 type="text"
                 value={answers.one}
                 onChange={(e) => setAnswers({ ...answers, one: e.target.value })}
                 className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
-              />
+              />{' '}
+              Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun.
+              Tanah menjadi basah, dan biji-bijian sulit ditemukan.
             </p>
-
-            <p className="indent-6">
-              Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
+            <p className=" indent-6">
+              Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku bisa
+              berbagi sedikit.&quot;{' '}
               <input
                 type="text"
                 value={answers.two}
@@ -302,29 +299,16 @@ const Page = () => {
                 className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
               />
-              {/* <textarea
-                value={answers.two}
-                onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`w-full mt-2 p-2 rounded-md resize-none font-medium focus:outline-none focus:ring-0 focus:border-transparent ${isCorrect('two') ? 'text-green-600 border-green-600 border-2' : 'text-black border border-gray-400'}`}
-                rows={2}
-                placeholder="Ketik jawaban di sini..."
-              /> */}
-              Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum perlahan dan merasa segar.
             </p>
-
             <p className="indent-6">
-              Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot;{' '}
               <input
                 type="text"
                 value={answers.three}
                 onChange={(e) => setAnswers({ ...answers, three: e.target.value })}
                 className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
-              />
-              Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
-            </p>
-
-            <p className="indent-6">
+              />{' '}
+              Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti.{' '}
               <input
                 type="text"
                 value={answers.four}
@@ -332,8 +316,15 @@ const Page = () => {
                 className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
-              Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran
-              tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang cerdik, tetapi juga bijak dalam bersikap.
+              Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba,
+              semua semut sudah siap.
+              <input
+                type="text"
+                value={answers.five}
+                onChange={(e) => setAnswers({ ...answers, five: e.target.value })}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('five') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                placeholder="Ketik jawaban di sini..."
+              />
             </p>
           </div>
 
@@ -379,26 +370,22 @@ const Page = () => {
           {/* Running Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
-              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
-                <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
+              <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown2'}`}>
+                <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    <span className="font-bold">Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. </span> Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun,
-                    air sungai itu tampak keruh dan berwarna cokelat. <span className="font-bold">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
+                    Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
+                    <span className="font-bold"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil
+                    bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
-                    <span className="font-bold">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum
-                    perlahan dan merasa segar.
+                    Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan.
+                    <span className="font-bold"> Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku bisa berbagi sedikit.&quot; </span> Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot; Kancil mengangguk dan mengucapkan terima kasih.{' '}
-                    <span className="font-bold"> Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
-                  </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
-                    <span className="font-bold"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat.
-                    Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang
-                    cerdik, tetapi juga bijak dalam bersikap.
+                    <span className="font-bold"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak
+                    menyimpan dendam. Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan.{' '}
+                    <span className="font-bold">Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
                   </p>
                 </div>
               </div>
@@ -463,65 +450,48 @@ const Page = () => {
 
           {/* Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[360px] rounded-[20px] p-4 border-[5px] border-[#3e1f1f] overflow-y-auto overflow-x-hidden text-[1.2rem]  space-y-4">
+            <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
+
             <p className="indent-6">
+              Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
               <input
                 type="text"
                 value={answersTwo.one}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, one: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
-              />
-              Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan berwarna cokelat.{' '}
+              />{' '}
+              Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun.
+              Tanah menjadi basah, dan biji-bijian sulit ditemukan.
+            </p>
+            <p className=" indent-6">
+              Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan.{' '}
               <input
                 type="text"
                 value={answersTwo.two}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, two: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
-              />
+              />{' '}
+              Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
             </p>
-
             <p className="indent-6">
-              Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
               <input
                 type="text"
                 value={answersTwo.three}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, three: e.target.value })}
-                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
-              />
-              {/* <textarea
-                value={answers.two}
-                onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`w-full mt-2 p-2 rounded-md resize-none font-medium focus:outline-none focus:ring-0 focus:border-transparent ${isCorrect('two') ? 'text-green-600 border-green-600 border-2' : 'text-black border border-gray-400'}`}
-                rows={2}
-                placeholder="Ketik jawaban di sini..."
-              /> */}
-              Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum perlahan dan merasa segar.
-            </p>
-
-            <p className="indent-6">
-              Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot; Kancil mengangguk dan mengucapkan terima kasih.
+              />{' '}
+              Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak menyimpan dendam. Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan
+              saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan.{' '}
               <input
                 type="text"
                 value={answersTwo.four}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, four: e.target.value })}
-                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
                 placeholder="Ketik jawaban di sini..."
               />
-              Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
-            </p>
-
-            <p className="indent-6">
-              <input
-                type="text"
-                value={answersTwo.five}
-                onChange={(e) => setAnswersTwo({ ...answersTwo, five: e.target.value })}
-                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('five') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
-              Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran
-              tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang cerdik, tetapi juga bijak dalam bersikap.
             </p>
           </div>
 

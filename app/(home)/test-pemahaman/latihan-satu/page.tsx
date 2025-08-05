@@ -281,6 +281,8 @@ const Page = () => {
 
           {/* Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[360px] rounded-[20px] p-4 border-[5px] border-[#3e1f1f] overflow-y-auto overflow-x-hidden text-[1.2rem]  space-y-4">
+            <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
+
             <p className="indent-6">
               Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan berwarna
               cokelat.{' '}
@@ -463,6 +465,8 @@ const Page = () => {
 
           {/* Text Box */}
           <div className="bg-white mx-auto w-[1000px] h-[360px] rounded-[20px] p-4 border-[5px] border-[#3e1f1f] overflow-y-auto overflow-x-hidden text-[1.2rem]  space-y-4">
+            <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
+
             <p className="indent-6">
               <input
                 type="text"
