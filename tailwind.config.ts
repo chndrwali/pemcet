@@ -80,6 +80,7 @@ const config: Config = {
         desa: 'url(/bg-desa.jpg)',
         doa: 'url(/bg-doa.jpg)',
         deskripsi: 'url(/bg-deskripsi.jpg)',
+        pemahaman: 'url(/test-pemahaman.png)',
       },
     },
   },
