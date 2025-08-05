@@ -59,6 +59,9 @@ const Page = () => {
         <Link href="/learning-materials/prinsip">
           <Image src="/icon/arrow.png" width={50} height={50} alt="Left" style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
         </Link>
+        <Link href="/learning-materials/pemahaman">
+          <Image src="/icon/arrow.png" width={50} height={50} alt="Right" style={{ width: '55px', height: '55px' }} />
+        </Link>
       </div>
     </section>
   );
