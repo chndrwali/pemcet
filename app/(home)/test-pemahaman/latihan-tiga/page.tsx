@@ -27,15 +27,15 @@ const Page = () => {
   const [wordResults, setWordResults] = useState<{ [key: string]: { correct: number; total: number; inputTotal: number; missed: number; wrong: number; words: { word: string; isCorrect: boolean }[]; percentage: number } }>({});
 
   const correctAnswers = {
-    one: 'burung hantu tua terbang rendah diantara pepohonan. Ia sedang mencari makanan untuk anak-anaknya yang menunggu disarang.',
+    one: 'burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang. ',
     two: 'Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya.',
     three: 'Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki.',
   };
 
   const correctAnswers2 = {
-    one: 'Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum.',
-    two: 'Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.',
-    three: 'Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar.',
+    one: '"Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.”',
+    two: '“Pengalaman mengajarku bahwa kadang yang kita butuhkan bukan lebih banyak tenaga, tapi lebih banyak kesabaran.”',
+    three: 'Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu. ',
   };
 
   const checkWordsInSentence = (inputSentence: string, correctSentence: string) => {

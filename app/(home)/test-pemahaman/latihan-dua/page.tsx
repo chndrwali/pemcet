@@ -30,7 +30,7 @@ const Page = () => {
   const [wordResults, setWordResults] = useState<{ [key: string]: { correct: number; total: number; inputTotal: number; missed: number; wrong: number; words: { word: string; isCorrect: boolean }[]; percentage: number } }>({});
 
   const correctAnswers = {
-    one: 'Ia tahu bahwa saat hujan datang, mencari makanan lebih sulit.',
+    one: 'Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit.',
     two: 'Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.',
     three: 'Sejak kejadian itu, para semut mulai berubah.',
     four: 'Semut kecil pun tidak menyimpan dendam.',
@@ -38,7 +38,7 @@ const Page = () => {
   };
 
   const correctAnswers2 = {
-    one: 'Ia tahu bahwa saat hujan datang, mencari makanan lebih sulit.',
+    one: 'Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit.',
     two: 'Dengan senyum, semut berkata, "Aku tidak bisa memberi banyak, tapi aku bisa berbagi sedikit."',
     three: 'Sejak kejadian itu, para semut mulai berubah.',
     four: 'Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.',
