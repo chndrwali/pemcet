@@ -1,13 +1,14 @@
 'use client';
 
 import { Header } from '@/components/header/header';
+import { getAnswerNumber } from '@/lib/utils';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(36);
+  const [waktu, setWaktu] = useState(36); //36
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -178,7 +179,7 @@ const Page = () => {
 
   useEffect(() => {
     if (step === 1 || step === 2 || step === 4) {
-      setWaktu(36);
+      setWaktu(36); //36
       setMulai(false);
     }
 
@@ -444,7 +445,7 @@ const Page = () => {
                 <div className="space-y-4">
                   {Object.entries(wordResults).map(([key, result]) => (
                     <div key={key} className="border-b pb-3">
-                      <div className="text-sm font-semibold text-gray-600 mb-2">Jawaban {key.toUpperCase()}:</div>
+                      <div className="text-sm font-semibold text-gray-600 mb-2">Jawaban {getAnswerNumber(key)}:</div>
                       <div className="grid grid-cols-2 gap-4 text-sm mb-2">
                         <div>
                           <span className="text-green-600 font-semibold">✓ Benar: {result.correct} kata</span>
@@ -636,7 +637,7 @@ const Page = () => {
                 <div className="space-y-4">
                   {Object.entries(wordResults).map(([key, result]) => (
                     <div key={key} className="border-b pb-3">
-                      <div className="text-sm font-semibold text-gray-600 mb-2">Jawaban {key.toUpperCase()}:</div>
+                      <div className="text-sm font-semibold text-gray-600 mb-2">Jawaban {getAnswerNumber(key)}:</div>
                       <div className="grid grid-cols-2 gap-4 text-sm mb-2">
                         <div>
                           <span className="text-green-600 font-semibold">✓ Benar: {result.correct} kata</span>
