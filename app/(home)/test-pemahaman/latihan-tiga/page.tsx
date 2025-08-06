@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(1); //32
+  const [waktu, setWaktu] = useState(32); //32
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -155,7 +155,7 @@ const Page = () => {
 
   useEffect(() => {
     if (step === 1 || step === 2 || step === 4) {
-      setWaktu(1); //32
+      setWaktu(32); //32
       setMulai(false);
     }
 
