@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation';
 export const Header = () => {
   const pathname = usePathname();
 
-  const isNotHome = ['/learning-materials', '/relevant', '/latihan-membaca', '/test-membaca', '/meningkatkan-membaca', '/games', '/doa', '/test-pemahaman'].some((path) => pathname.startsWith(path));
-  const isNotMaterials = ['/learning-materials', '/latihan-membaca', 'test-membaca', '/meningkatkan-membaca', '/test-pemahaman'].some((path) => pathname.startsWith(path));
+  const isNotHome = ['/learning-materials', '/relevant', '/latihan-membaca', '/test-membaca', '/meningkatkan-membaca', '/games', '/doa', '/test-pemahaman', '/kem'].some((path) => pathname.startsWith(path));
+  const isNotMaterials = ['/learning-materials', '/latihan-membaca', 'test-membaca', '/meningkatkan-membaca', '/test-pemahaman', '/kem'].some((path) => pathname.startsWith(path));
   const isAdminPage = pathname.startsWith('/admin');
 
   return (

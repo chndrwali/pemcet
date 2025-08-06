@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(35);
+  const [waktu, setWaktu] = useState(29);
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -60,7 +60,7 @@ const Page = () => {
 
   useEffect(() => {
     if (step === 1 || step === 2 || step === 4) {
-      setWaktu(35);
+      setWaktu(29);
       setMulai(false);
     }
   }, [step]);
@@ -73,11 +73,11 @@ const Page = () => {
     }
   };
 
-  const handleBack = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
+  // const handleBack = () => {
+  //   if (step > 1) {
+  //     setStep(step - 1);
+  //   }
+  // };
 
   return (
     <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-pemahaman z-20">
@@ -111,21 +111,21 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown2'}`}>
                 <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya. Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. Teman-temannya
                     mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah
                     menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku
                     bisa berbagi sedikit.&quot; Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Sejak kejadian itu, para semut mulai berubah. Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak menyimpan dendam. Ia justru senang
                     karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba, semua semut
                     sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.
@@ -193,21 +193,21 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown2'}`}>
                 <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
                     <span className="text-red-600"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil
                     bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku
                     bisa berbagi sedikit.&quot; <span className="text-red-600"> Mereka pun belajar bahwa kerja keras dan perencanaan itu penting. </span>
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="text-red-600"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti.{' '}
                     <span className="text-red-600">Semut kecil pun tidak menyimpan dendam.</span> Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling
                     mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba, semua semut sudah siap.
@@ -242,9 +242,7 @@ const Page = () => {
           {/* Tombol Next */}
 
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             {waktu === 0 && (
               <button onClick={handleNext}>
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
@@ -283,7 +281,7 @@ const Page = () => {
                 type="text"
                 value={answers.one}
                 onChange={(e) => setAnswers({ ...answers, one: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun.
@@ -296,7 +294,7 @@ const Page = () => {
                 type="text"
                 value={answers.two}
                 onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -305,7 +303,7 @@ const Page = () => {
                 type="text"
                 value={answers.three}
                 onChange={(e) => setAnswers({ ...answers, three: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti.{' '}
@@ -313,7 +311,7 @@ const Page = () => {
                 type="text"
                 value={answers.four}
                 onChange={(e) => setAnswers({ ...answers, four: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('four') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba,
@@ -322,7 +320,7 @@ const Page = () => {
                 type="text"
                 value={answers.five}
                 onChange={(e) => setAnswers({ ...answers, five: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('five') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('five') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -330,9 +328,7 @@ const Page = () => {
 
           {/* Navigasi */}
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             <button onClick={handleNext}>
               <Image src="/icon/arrow.png" alt="Next" width={55} height={55} />
             </button>
@@ -368,21 +364,21 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown2'}`}>
                 <h1 className="font-bold text-center">Semut dan Makanan Musim Hujan</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
                     <span className="font-bold"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil
                     bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan.
                     <span className="font-bold"> Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku bisa berbagi sedikit.&quot; </span> Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="font-bold"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak
                     menyimpan dendam. Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan.{' '}
                     <span className="font-bold">Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
@@ -416,9 +412,7 @@ const Page = () => {
           {/* Tombol Next */}
 
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             {waktu === 0 && (
               <button onClick={handleNext}>
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
@@ -458,7 +452,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.one}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, one: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun.
@@ -470,7 +464,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.two}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, two: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
@@ -480,7 +474,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.three}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, three: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak menyimpan dendam. Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan
@@ -489,7 +483,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.four}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, four: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -497,9 +491,7 @@ const Page = () => {
 
           {/* Navigasi */}
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             <button onClick={handleNext}>
               <Image src="/icon/arrow.png" alt="Next" width={55} height={55} />
             </button>

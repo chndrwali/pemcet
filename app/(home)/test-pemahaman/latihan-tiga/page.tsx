@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(40);
+  const [waktu, setWaktu] = useState(34);
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -54,7 +54,7 @@ const Page = () => {
 
   useEffect(() => {
     if (step === 1 || step === 2 || step === 4) {
-      setWaktu(40);
+      setWaktu(34);
       setMulai(false);
     }
   }, [step]);
@@ -67,11 +67,11 @@ const Page = () => {
     }
   };
 
-  const handleBack = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
+  // const handleBack = () => {
+  //   if (step > 1) {
+  //     setStep(step - 1);
+  //   }
+  // };
 
   return (
     <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-pemahaman z-20">
@@ -105,22 +105,22 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
                 <h1 className="font-bold text-center">Burung Hantu yang Sabar Menunggu</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Malam mulai larut ketika seekor burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang. Namun, malam itu tak seperti biasanya. Tak satu pun tikus terlihat
                     keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang, namun itu akan menghabiskan tenaga. Ia akhirnya bertengger di dahan
                     dan berkata dalam hati, &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;{' '}
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya. Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke sarangnya dengan membawa hasil. Anak-anaknya pun makan dengan
                     lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya, &quot;Bagaimana kau tahu harus menunggu di tempat itu?&quot; Burung hantu menjawab, &quot;Pengalaman mengajarku bahwa kadang yang kita butuhkan
                     bukan lebih banyak tenaga, tapi lebih banyak kesabaran.&quot;
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu. Ia tak hanya dikenal sebagai pemburu malam
                     yang handal, tetapi juga bijak dan penuh perhitungan. Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki. Bahkan di saat mendesak, burung hantu tetap memilih untuk berpikir jernih dan
                     tidak gegabah.{' '}
@@ -188,22 +188,22 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
                 <h1 className="font-bold text-center">Burung Hantu yang Sabar Menunggu</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Malam mulai larut ketika seekor <span className="text-red-600"> burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang.</span> Namun, malam itu tak seperti
                     biasanya. Tak satu pun tikus terlihat keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang, namun itu akan menghabiskan
                     tenaga. Ia akhirnya bertengger di dahan dan berkata dalam hati, &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;{' '}
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="text-red-600">Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya. </span>Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke sarangnya dengan membawa
                     hasil. Anak-anaknya pun makan dengan lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya, &quot;Bagaimana kau tahu harus menunggu di tempat itu?&quot; Burung hantu menjawab, &quot;Pengalaman
                     mengajarku bahwa kadang yang kita butuhkan bukan lebih banyak tenaga, tapi lebih banyak kesabaran.&quot;
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu. Ia tak hanya dikenal sebagai pemburu malam
                     yang handal, tetapi juga bijak dan penuh perhitungan. <span className="text-red-600"> Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki.</span> Bahkan di saat mendesak, burung hantu tetap
                     memilih untuk berpikir jernih dan tidak gegabah.{' '}
@@ -237,9 +237,7 @@ const Page = () => {
           {/* Tombol Next */}
 
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             {waktu === 0 && (
               <button onClick={handleNext}>
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
@@ -277,7 +275,7 @@ const Page = () => {
                 type="text"
                 value={answers.one}
                 onChange={(e) => setAnswers({ ...answers, one: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Namun, malam itu tak seperti biasanya. Tak satu pun tikus terlihat keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang, namun itu
@@ -288,7 +286,7 @@ const Page = () => {
                 type="text"
                 value={answers.two}
                 onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
               Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke sarangnya dengan membawa hasil. Anak-anaknya pun makan dengan lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya, &quot;Bagaimana kau
@@ -301,7 +299,7 @@ const Page = () => {
                 type="text"
                 value={answers.three}
                 onChange={(e) => setAnswers({ ...answers, three: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Bahkan di saat mendesak, burung hantu tetap memilih untuk berpikir jernih dan tidak gegabah.{' '}
@@ -310,9 +308,7 @@ const Page = () => {
 
           {/* Navigasi */}
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             <button onClick={handleNext}>
               <Image src="/icon/arrow.png" alt="Next" width={55} height={55} />
             </button>
@@ -348,24 +344,24 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
                 <h1 className="font-bold text-center">Burung Hantu yang Sabar Menunggu</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Malam mulai larut ketika seekor burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang. Namun, malam itu tak seperti biasanya. Tak satu pun tikus terlihat
                     keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang, namun itu akan menghabiskan tenaga. Ia akhirnya bertengger di dahan
                     dan berkata dalam hati, <span className="font-bold"> &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;</span>
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya. Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke sarangnya dengan membawa hasil. Anak-anaknya pun makan dengan
                     lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya,{' '}
                     <span className="font-bold">
                       &quot;Bagaimana kau tahu harus menunggu di tempat itu?&quot; Burung hantu menjawab, &quot;Pengalaman mengajarku bahwa kadang yang kita butuhkan bukan lebih banyak tenaga, tapi lebih banyak kesabaran.&quot;
                     </span>
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="font-bold"> Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu.</span> Ia tak
                     hanya dikenal sebagai pemburu malam yang handal, tetapi juga bijak dan penuh perhitungan. Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki. Bahkan di saat mendesak, burung hantu tetap
                     memilih untuk berpikir jernih dan tidak gegabah.{' '}
@@ -399,9 +395,7 @@ const Page = () => {
           {/* Tombol Next */}
 
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             {waktu === 0 && (
               <button onClick={handleNext}>
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
@@ -442,7 +436,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.one}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, one: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -453,7 +447,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.two}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, two: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -462,7 +456,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.three}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, three: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Ia tak hanya dikenal sebagai pemburu malam yang handal, tetapi juga bijak dan penuh perhitungan. Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki. Bahkan di saat mendesak, burung hantu tetap
@@ -471,11 +465,6 @@ const Page = () => {
           </div>
 
           {/* Navigasi */}
-          <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ transform: 'scaleX(-1)' }} />
-            </button>
-          </div>
         </>
       )}
     </section>

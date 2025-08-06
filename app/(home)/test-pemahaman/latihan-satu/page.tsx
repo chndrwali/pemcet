@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
-  const [waktu, setWaktu] = useState(40);
+  const [waktu, setWaktu] = useState(36);
   const [mulai, setMulai] = useState(false);
   const [step, setStep] = useState(1);
 
@@ -60,7 +60,7 @@ const Page = () => {
 
   useEffect(() => {
     if (step === 1 || step === 2 || step === 4) {
-      setWaktu(40);
+      setWaktu(36);
       setMulai(false);
     }
   }, [step]);
@@ -73,11 +73,11 @@ const Page = () => {
     }
   };
 
-  const handleBack = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
+  // const handleBack = () => {
+  //   if (step > 1) {
+  //     setStep(step - 1);
+  //   }
+  // };
 
   return (
     <section className="relative flex flex-col items-center min-h-screen bg-center bg-cover bg-pemahaman z-20">
@@ -111,24 +111,24 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
                 <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan
                     berwarna cokelat. Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot; Kancil duduk di bawah
                     pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum perlahan dan merasa segar.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot; Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam
                     bertindak. Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan
                     ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang cerdik, tetapi juga bijak dalam
                     bersikap.
@@ -196,25 +196,25 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
                 <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan
                     berwarna cokelat. <span className="text-red-600">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
                     <span className="text-red-600">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum
                     perlahan dan merasa segar.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot;{' '}
                     <span className="text-red-600">Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="text-red-600"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat.
                     Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang
                     cerdik, tetapi juga bijak dalam bersikap.
@@ -248,9 +248,7 @@ const Page = () => {
           {/* Tombol Next */}
 
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             {waktu === 0 && (
               <button onClick={handleNext}>
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
@@ -290,7 +288,7 @@ const Page = () => {
                 type="text"
                 value={answers.one}
                 onChange={(e) => setAnswers({ ...answers, one: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -301,13 +299,13 @@ const Page = () => {
                 type="text"
                 value={answers.two}
                 onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
               {/* <textarea
                 value={answers.two}
                 onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`w-full mt-2 p-2 rounded-md resize-none font-medium focus:outline-none focus:ring-0 focus:border-transparent ${isCorrect('two') ? 'text-green-600 border-green-600 border-2' : 'text-black border border-gray-400'}`}
+                className={`w-full mt-2 p-2 rounded-md resize-none font-medium focus:outline-none focus:ring-0 focus:border-transparent ${isCorrect('two') ? 'text-green-600 border-green-600 border-2' : 'text-red-600 border border-gray-400'}`}
                 rows={2}
                 placeholder="Ketik jawaban di sini..."
               /> */}
@@ -320,7 +318,7 @@ const Page = () => {
                 type="text"
                 value={answers.three}
                 onChange={(e) => setAnswers({ ...answers, three: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
               Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
@@ -331,7 +329,7 @@ const Page = () => {
                 type="text"
                 value={answers.four}
                 onChange={(e) => setAnswers({ ...answers, four: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('four') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran
@@ -341,9 +339,7 @@ const Page = () => {
 
           {/* Navigasi */}
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             <button onClick={handleNext}>
               <Image src="/icon/arrow.png" alt="Next" width={55} height={55} />
             </button>
@@ -379,25 +375,25 @@ const Page = () => {
           )}
 
           {/* Running Text Box */}
-          <div className="bg-white mx-auto w-[1000px] h-[300px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
+          <div className="bg-white mx-auto w-[1000px] h-[350px] rounded-[20px] p-2 border-[5px] border-[#3e1f1f] overflow-hidden relative">
             {mulai ? (
               <div className={`absolute w-fit text-[1.2rem]  text-justify ${waktu === 0 ? 'animate-none' : 'animate-scrollDown3'}`}>
                 <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
                 <div className="space-y-3">
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="font-bold">Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. </span> Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun,
                     air sungai itu tampak keruh dan berwarna cokelat. <span className="font-bold">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
                     <span className="font-bold">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum
                     perlahan dan merasa segar.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot; Kancil mengangguk dan mengucapkan terima kasih.{' '}
                     <span className="font-bold"> Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
                   </p>
-                  <p className="whitespace-pre-wrap break-words w-full pr-10 indent-6">
+                  <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     <span className="font-bold"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat.
                     Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang
                     cerdik, tetapi juga bijak dalam bersikap.
@@ -431,9 +427,7 @@ const Page = () => {
           {/* Tombol Next */}
 
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ width: '55px', height: '55px', transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             {waktu === 0 && (
               <button onClick={handleNext}>
                 <Image src="/icon/arrow.png" width={55} height={55} alt="Next" />
@@ -472,7 +466,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.one}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, one: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
               Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan berwarna cokelat.{' '}
@@ -480,7 +474,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.two}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, two: e.target.value })}
-                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none border-dotted w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
             </p>
@@ -491,13 +485,13 @@ const Page = () => {
                 type="text"
                 value={answersTwo.three}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, three: e.target.value })}
-                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
               {/* <textarea
                 value={answers.two}
                 onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`w-full mt-2 p-2 rounded-md resize-none font-medium focus:outline-none focus:ring-0 focus:border-transparent ${isCorrect('two') ? 'text-green-600 border-green-600 border-2' : 'text-black border border-gray-400'}`}
+                className={`w-full mt-2 p-2 rounded-md resize-none font-medium focus:outline-none focus:ring-0 focus:border-transparent ${isCorrect('two') ? 'text-green-600 border-green-600 border-2' : 'text-red-600 border border-gray-400'}`}
                 rows={2}
                 placeholder="Ketik jawaban di sini..."
               /> */}
@@ -510,7 +504,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.four}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, four: e.target.value })}
-                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />
               Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
@@ -521,7 +515,7 @@ const Page = () => {
                 type="text"
                 value={answersTwo.five}
                 onChange={(e) => setAnswersTwo({ ...answersTwo, five: e.target.value })}
-                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('five') ? 'text-green-600 border-green-600 font-bold' : 'text-black border-black'}`}
+                className={`border-b-2 outline-none w-full mt-2 ${isCorrectTwo('five') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
                 placeholder="Ketik jawaban di sini..."
               />{' '}
               Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran
@@ -531,9 +525,7 @@ const Page = () => {
 
           {/* Navigasi */}
           <div className="flex justify-between w-full px-10 mt-10">
-            <button onClick={handleBack}>
-              <Image src="/icon/arrow.png" alt="" width={55} height={55} style={{ transform: 'scaleX(-1)' }} />
-            </button>
+            <div />
             <button onClick={handleNext}>
               <Image src="/icon/arrow.png" alt="Next" width={55} height={55} />
             </button>
