@@ -26,6 +26,9 @@ const Page = () => {
     four: '',
   });
 
+  const [showResults, setShowResults] = useState(false);
+  const [wordResults, setWordResults] = useState<{ [key: string]: { correct: number; total: number; inputTotal: number; missed: number; wrong: number; words: { word: string; isCorrect: boolean }[]; percentage: number } }>({});
+
   const correctAnswers = {
     one: 'Ia tahu bahwa saat hujan datang, mencari makanan lebih sulit.',
     two: 'Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.',
@@ -41,11 +44,108 @@ const Page = () => {
     four: 'Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.',
   };
 
-  const isCorrect = (key: keyof typeof answers) => {
-    return answers[key].trim() === correctAnswers[key];
+  const checkWordsInSentence = (inputSentence: string, correctSentence: string) => {
+    const inputWords = inputSentence
+      .toLowerCase()
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0);
+    const correctWords = correctSentence
+      .toLowerCase()
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0);
+
+    // Check each input word against correct words
+    const inputResults = inputWords.map((word) => {
+      const cleanWord = word.replace(/[.,!?;:"()]/g, ''); // Remove punctuation for comparison
+      const isCorrect = correctWords.some((correctWord) => correctWord.replace(/[.,!?;:"()]/g, '') === cleanWord);
+      return { word, isCorrect };
+    });
+
+    // Count correct words from input
+    const correctInputWords = inputResults.filter((r) => r.isCorrect).length;
+
+    // Calculate based on correct answer length (not input length)
+    const totalCorrectWords = correctWords.length;
+    const missedWords = totalCorrectWords - correctInputWords;
+    const extraWrongWords = inputWords.length - correctInputWords;
+
+    // Score based on correct answer total
+    const accuracyPercentage = totalCorrectWords > 0 ? Math.round((correctInputWords / totalCorrectWords) * 100) : 0;
+
+    return {
+      correct: correctInputWords,
+      total: totalCorrectWords, // Total should be based on correct answer
+      inputTotal: inputWords.length,
+      missed: missedWords,
+      wrong: extraWrongWords,
+      words: inputResults,
+      percentage: accuracyPercentage,
+    };
   };
-  const isCorrectTwo = (key: keyof typeof answersTwo) => {
-    return answersTwo[key].trim() === correctAnswers2[key];
+
+  const calculateAllResults = () => {
+    const results: { [key: string]: { correct: number; total: number; inputTotal: number; missed: number; wrong: number; words: { word: string; isCorrect: boolean }[]; percentage: number } } = {};
+
+    if (step === 3) {
+      // Check answers for step 3
+      Object.keys(answers).forEach((key) => {
+        const inputSentence = answers[key as keyof typeof answers];
+        const correctSentence = correctAnswers[key as keyof typeof correctAnswers];
+        if (inputSentence.trim()) {
+          results[key] = checkWordsInSentence(inputSentence, correctSentence);
+        }
+      });
+    } else if (step === 5) {
+      // Check answers for step 5
+      Object.keys(answersTwo).forEach((key) => {
+        const inputSentence = answersTwo[key as keyof typeof answersTwo];
+        const correctSentence = correctAnswers2[key as keyof typeof correctAnswers2];
+        if (inputSentence.trim()) {
+          results[key] = checkWordsInSentence(inputSentence, correctSentence);
+        }
+      });
+    }
+
+    setWordResults(results);
+    setShowResults(true);
+  };
+
+  const getWordColorClass = (answerKey: string, wordIndex: number) => {
+    if (!showResults || !wordResults[answerKey]) return '';
+
+    const wordResult = wordResults[answerKey].words[wordIndex];
+    if (!wordResult) return '';
+
+    return wordResult.isCorrect ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800';
+  };
+
+  const renderInputWithWordHighlight = (answerKey: string, value: string, onChange: (value: string) => void, placeholder: string) => {
+    if (!showResults || !wordResults[answerKey]) {
+      return <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="border-b-2 border-dotted outline-none w-full mt-2 text-red-600 border-red-600" placeholder={placeholder} />;
+    }
+
+    const words = value.split(/(\s+)/); // Split but keep spaces
+
+    return (
+      <div className="border-b-2 border-dotted w-full mt-2 min-h-[2rem] p-1">
+        {words.map((part, index) => {
+          if (part.match(/\s+/)) {
+            return <span key={index}>{part}</span>;
+          }
+
+          const wordIndex = words.slice(0, index).filter((p) => !p.match(/\s+/)).length;
+          const colorClass = getWordColorClass(answerKey, wordIndex);
+
+          return (
+            <span key={index} className={`px-1 rounded ${colorClass}`}>
+              {part}
+            </span>
+          );
+        })}
+      </div>
+    );
   };
 
   useEffect(() => {
@@ -277,53 +377,65 @@ const Page = () => {
 
             <p className="indent-6">
               Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
-              <input
-                type="text"
-                value={answers.one}
-                onChange={(e) => setAnswers({ ...answers, one: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
+              {renderInputWithWordHighlight('one', answers.one, (value) => setAnswers({ ...answers, one: value }), 'Ketik jawaban di sini...')}
               Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun.
               Tanah menjadi basah, dan biji-bijian sulit ditemukan.
             </p>
             <p className=" indent-6">
               Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku bisa
-              berbagi sedikit.&quot;{' '}
-              <input
-                type="text"
-                value={answers.two}
-                onChange={(e) => setAnswers({ ...answers, two: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />
+              berbagi sedikit.&quot; {renderInputWithWordHighlight('two', answers.two, (value) => setAnswers({ ...answers, two: value }), 'Ketik jawaban di sini...')}
             </p>
             <p className="indent-6">
-              <input
-                type="text"
-                value={answers.three}
-                onChange={(e) => setAnswers({ ...answers, three: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
+              {renderInputWithWordHighlight('three', answers.three, (value) => setAnswers({ ...answers, three: value }), 'Ketik jawaban di sini...')}
               Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti.{' '}
-              <input
-                type="text"
-                value={answers.four}
-                onChange={(e) => setAnswers({ ...answers, four: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('four') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
+              {renderInputWithWordHighlight('four', answers.four, (value) => setAnswers({ ...answers, four: value }), 'Ketik jawaban di sini...')}
               Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba,
               semua semut sudah siap.
-              <input
-                type="text"
-                value={answers.five}
-                onChange={(e) => setAnswers({ ...answers, five: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrect('five') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />
+              {renderInputWithWordHighlight('five', answers.five, (value) => setAnswers({ ...answers, five: value }), 'Ketik jawaban di sini...')}
             </p>
+          </div>
+
+          <div className="flex flex-col items-center mt-6 space-y-4">
+            <button onClick={calculateAllResults} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+              Hasil
+            </button>
+
+            {showResults && (
+              <div className="bg-white border-4 border-blue-600 rounded-lg p-6 max-w-2xl">
+                <h3 className="text-xl font-bold mb-4 text-blue-800 text-center">Hasil Latihan 1</h3>
+                <div className="space-y-4">
+                  {Object.entries(wordResults).map(([key, result]) => (
+                    <div key={key} className="border-b pb-3">
+                      <div className="text-sm font-semibold text-gray-600 mb-2">Jawaban {key.toUpperCase()}:</div>
+                      <div className="grid grid-cols-2 gap-4 text-sm mb-2">
+                        <div>
+                          <span className="text-green-600 font-semibold">✓ Benar: {result.correct} kata</span>
+                        </div>
+                        <div>
+                          <span className="text-red-600 font-semibold">✗ Kurang: {result.missed} kata</span>
+                        </div>
+                        <div>
+                          <span className="text-orange-600 font-semibold">📝 Diisi: {result.inputTotal} kata</span>
+                        </div>
+                        <div>
+                          <span className="text-purple-600 font-semibold">📋 Total: {result.total} kata</span>
+                        </div>
+                      </div>
+                      <div className="text-lg font-bold">
+                        <span className={`${result.percentage >= 70 ? 'text-green-600' : result.percentage >= 50 ? 'text-orange-600' : 'text-red-600'}`}>Skor: {result.percentage}%</span>
+                      </div>
+                      {result.wrong > 0 && <div className="text-xs text-red-500 mt-1">({result.wrong} kata salah/tidak relevan)</div>}
+                    </div>
+                  ))}
+                  <div className="text-center pt-4 border-t">
+                    <div className="text-lg font-bold text-blue-600">
+                      Total Skor Rata-rata: {Object.values(wordResults).length > 0 ? Math.round(Object.values(wordResults).reduce((sum, result) => sum + result.percentage, 0) / Object.values(wordResults).length) : 0}%
+                    </div>
+                    <div className="text-sm text-gray-600 mt-2">Skor dihitung berdasarkan kelengkapan jawaban yang benar</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Navigasi */}
@@ -448,45 +560,64 @@ const Page = () => {
 
             <p className="indent-6">
               Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
-              <input
-                type="text"
-                value={answersTwo.one}
-                onChange={(e) => setAnswersTwo({ ...answersTwo, one: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('one') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
+              {renderInputWithWordHighlight('one', answersTwo.one, (value) => setAnswersTwo({ ...answersTwo, one: value }), 'Ketik jawaban di sini...')}
               Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun.
               Tanah menjadi basah, dan biji-bijian sulit ditemukan.
             </p>
             <p className=" indent-6">
               Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan.{' '}
-              <input
-                type="text"
-                value={answersTwo.two}
-                onChange={(e) => setAnswersTwo({ ...answersTwo, two: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('two') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
+              {renderInputWithWordHighlight('two', answersTwo.two, (value) => setAnswers({ ...answers, two: value }), 'Ketik jawaban di sini...')}
               Mereka pun belajar bahwa kerja keras dan perencanaan itu penting.
             </p>
             <p className="indent-6">
-              <input
-                type="text"
-                value={answersTwo.three}
-                onChange={(e) => setAnswersTwo({ ...answersTwo, three: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('three') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />{' '}
+              {renderInputWithWordHighlight('three', answersTwo.three, (value) => setAnswersTwo({ ...answersTwo, three: value }), 'Ketik jawaban di sini...')}
               Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim berganti. Semut kecil pun tidak menyimpan dendam. Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan
               saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan.{' '}
-              <input
-                type="text"
-                value={answersTwo.four}
-                onChange={(e) => setAnswersTwo({ ...answersTwo, four: e.target.value })}
-                className={`border-b-2 border-dotted outline-none w-full mt-2 ${isCorrectTwo('four') ? 'text-green-600 border-green-600 font-bold' : 'text-red-600 border-red-600'}`}
-                placeholder="Ketik jawaban di sini..."
-              />
+              {renderInputWithWordHighlight('four', answersTwo.four, (value) => setAnswersTwo({ ...answersTwo, four: value }), 'Ketik jawaban di sini...')}
             </p>
+          </div>
+
+          <div className="flex flex-col items-center mt-6 space-y-4">
+            <button onClick={calculateAllResults} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+              Hasil
+            </button>
+
+            {showResults && (
+              <div className="bg-white border-4 border-blue-600 rounded-lg p-6 max-w-2xl">
+                <h3 className="text-xl font-bold mb-4 text-blue-800 text-center">Hasil Latihan 1</h3>
+                <div className="space-y-4">
+                  {Object.entries(wordResults).map(([key, result]) => (
+                    <div key={key} className="border-b pb-3">
+                      <div className="text-sm font-semibold text-gray-600 mb-2">Jawaban {key.toUpperCase()}:</div>
+                      <div className="grid grid-cols-2 gap-4 text-sm mb-2">
+                        <div>
+                          <span className="text-green-600 font-semibold">✓ Benar: {result.correct} kata</span>
+                        </div>
+                        <div>
+                          <span className="text-red-600 font-semibold">✗ Kurang: {result.missed} kata</span>
+                        </div>
+                        <div>
+                          <span className="text-orange-600 font-semibold">📝 Diisi: {result.inputTotal} kata</span>
+                        </div>
+                        <div>
+                          <span className="text-purple-600 font-semibold">📋 Total: {result.total} kata</span>
+                        </div>
+                      </div>
+                      <div className="text-lg font-bold">
+                        <span className={`${result.percentage >= 70 ? 'text-green-600' : result.percentage >= 50 ? 'text-orange-600' : 'text-red-600'}`}>Skor: {result.percentage}%</span>
+                      </div>
+                      {result.wrong > 0 && <div className="text-xs text-red-500 mt-1">({result.wrong} kata salah/tidak relevan)</div>}
+                    </div>
+                  ))}
+                  <div className="text-center pt-4 border-t">
+                    <div className="text-lg font-bold text-blue-600">
+                      Total Skor Rata-rata: {Object.values(wordResults).length > 0 ? Math.round(Object.values(wordResults).reduce((sum, result) => sum + result.percentage, 0) / Object.values(wordResults).length) : 0}%
+                    </div>
+                    <div className="text-sm text-gray-600 mt-2">Skor dihitung berdasarkan kelengkapan jawaban yang benar</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Navigasi */}
