@@ -157,9 +157,19 @@ const Page = () => {
       setWaktu(32);
       setMulai(false);
     }
+
+    if (step !== 3 && step !== 5) {
+      setShowResults(false);
+      setWordResults({});
+    }
   }, [step]);
 
   const handleNext = () => {
+    if (step === 3 || step === 5) {
+      setShowResults(false);
+      setWordResults({});
+    }
+
     if (step < 5) {
       setStep(step + 1);
     } else {
