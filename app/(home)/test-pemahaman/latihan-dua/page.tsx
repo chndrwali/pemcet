@@ -311,18 +311,18 @@ const Page = () => {
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
-                    <span className="text-red-800 bg-red-200 px-1 rounded"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot;
-                    kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
+                    <span className="text-green-800 bg-green-200 px-1 rounded"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih
+                    lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan. Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku
-                    bisa berbagi sedikit.&quot; <span className="text-red-800 bg-red-200 px-1 rounded"> Mereka pun belajar bahwa kerja keras dan perencanaan itu penting. </span>
+                    bisa berbagi sedikit.&quot; <span className="text-green-800 bg-green-200 px-1 rounded"> Mereka pun belajar bahwa kerja keras dan perencanaan itu penting. </span>
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="text-red-800 bg-red-200 px-1 rounded"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim
-                    berganti. <span className="text-red-800 bg-red-200 px-1 rounded">Semut kecil pun tidak menyimpan dendam.</span> Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja
+                    <span className="text-green-800 bg-green-200 px-1 rounded"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim
+                    berganti. <span className="text-green-800 bg-green-200 px-1 rounded">Semut kecil pun tidak menyimpan dendam.</span> Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja
                     bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak menunda pekerjaan. Ketika musim hujan berikutnya tiba, semua semut sudah siap.
-                    <span className="text-red-800 bg-red-200 px-1 rounded"> Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
+                    <span className="text-green-800 bg-green-200 px-1 rounded"> Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
                   </p>
                 </div>
               </div>
@@ -494,18 +494,18 @@ const Page = () => {
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Musim hujan datang lebih cepat tahun ini. Di sebuah ladang, seekor semut kecil sedang bekerja keras mengangkut biji-bijian ke sarangnya.{' '}
-                    <span className="font-bold bg-slate-400 px-1 rounded"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih lama!&quot;
-                    kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
+                    <span className="bg-green-200 text-green-800 px-1 rounded"> Ia tahu bahwa saat hujan datang, mencari makanan akan lebih sulit. </span> Teman-temannya mengolok-oloknya. &quot;Mengapa kamu sibuk sekali? Hujan masih
+                    lama!&quot; kata mereka sambil bermain. Namun semut tidak peduli. Setiap hari ia mengumpulkan makanan sedikit demi sedikit. Hujan pertama pun turun. Tanah menjadi basah, dan biji-bijian sulit ditemukan.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Teman-teman semut mulai kelaparan. Mereka menyesal karena tidak menyiapkan makanan lebih awal. Mereka datang ke semut kecil dan memohon bantuan.
-                    <span className="font-bold bg-slate-400 px-1 rounded"> Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku bisa berbagi sedikit.&quot; </span> Mereka pun belajar bahwa kerja keras dan perencanaan
-                    itu penting.
+                    <span className="bg-green-200 text-green-800 px-1 rounded"> Dengan senyum, semut berkata, &quot;Aku tidak bisa memberi banyak, tapi aku bisa berbagi sedikit.&quot; </span> Mereka pun belajar bahwa kerja keras dan
+                    perencanaan itu penting.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="font-bold bg-slate-400 px-1 rounded"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim
+                    <span className="bg-green-200 text-green-800 px-1 rounded"> Sejak kejadian itu, para semut mulai berubah. </span> Mereka tidak lagi menyepelekan waktu dan selalu membantu semut kecil mengumpulkan makanan sebelum musim
                     berganti. Semut kecil pun tidak menyimpan dendam. Ia justru senang karena kini seluruh koloni menjadi lebih rajin dan saling peduli. Mereka bekerja bersama-sama setiap hari, saling mengingatkan agar tidak malas dan tidak
-                    menunda pekerjaan. <span className="font-bold bg-slate-400 px-1 rounded">Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
+                    menunda pekerjaan. <span className="bg-green-200 text-green-800 px-1 rounded">Ketika musim hujan berikutnya tiba, semua semut sudah siap. Tidak ada lagi yang kelaparan, karena mereka telah belajar dari pengalaman.</span>
                   </p>
                 </div>
               </div>
