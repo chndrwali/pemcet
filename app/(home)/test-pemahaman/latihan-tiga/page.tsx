@@ -305,19 +305,19 @@ const Page = () => {
                 <h1 className="font-bold text-center">Burung Hantu yang Sabar Menunggu</h1>
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    Malam mulai larut ketika seekor <span className="text-red-600"> burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang.</span> Namun, malam itu tak seperti
-                    biasanya. Tak satu pun tikus terlihat keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang, namun itu akan menghabiskan
-                    tenaga. Ia akhirnya bertengger di dahan dan berkata dalam hati, &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;{' '}
+                    Malam mulai larut ketika seekor <span className="text-red-800 bg-red-200 px-1 rounded"> burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang.</span>{' '}
+                    Namun, malam itu tak seperti biasanya. Tak satu pun tikus terlihat keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang,
+                    namun itu akan menghabiskan tenaga. Ia akhirnya bertengger di dahan dan berkata dalam hati, &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;{' '}
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="text-red-600">Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya. </span>Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke sarangnya dengan membawa
-                    hasil. Anak-anaknya pun makan dengan lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya, &quot;Bagaimana kau tahu harus menunggu di tempat itu?&quot; Burung hantu menjawab, &quot;Pengalaman
-                    mengajarku bahwa kadang yang kita butuhkan bukan lebih banyak tenaga, tapi lebih banyak kesabaran.&quot;
+                    <span className="text-red-800 bg-red-200 px-1 rounded">Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya. </span>Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke
+                    sarangnya dengan membawa hasil. Anak-anaknya pun makan dengan lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya, &quot;Bagaimana kau tahu harus menunggu di tempat itu?&quot; Burung hantu menjawab,
+                    &quot;Pengalaman mengajarku bahwa kadang yang kita butuhkan bukan lebih banyak tenaga, tapi lebih banyak kesabaran.&quot;
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu. Ia tak hanya dikenal sebagai pemburu malam
-                    yang handal, tetapi juga bijak dan penuh perhitungan. <span className="text-red-600"> Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki.</span> Bahkan di saat mendesak, burung hantu tetap
-                    memilih untuk berpikir jernih dan tidak gegabah.{' '}
+                    yang handal, tetapi juga bijak dan penuh perhitungan. <span className="text-red-800 bg-red-200 px-1 rounded"> Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki.</span> Bahkan di saat
+                    mendesak, burung hantu tetap memilih untuk berpikir jernih dan tidak gegabah.{' '}
                   </p>
                 </div>
               </div>
@@ -486,19 +486,22 @@ const Page = () => {
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Malam mulai larut ketika seekor burung hantu tua terbang rendah di antara pepohonan. Ia sedang mencari makan untuk anak-anaknya yang menunggu di sarang. Namun, malam itu tak seperti biasanya. Tak satu pun tikus terlihat
                     keluar dari persembunyian. Burung hantu mulai gelisah. Ia lelah terbang, tapi belum menemukan makanan. Ia sempat berpikir untuk pergi jauh ke ladang, namun itu akan menghabiskan tenaga. Ia akhirnya bertengger di dahan
-                    dan berkata dalam hati, <span className="font-bold"> &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;</span>
+                    dan berkata dalam hati, <span className="font-bold bg-slate-400 px-1 rounded"> &quot;Aku akan menunggu dengan sabar. Mungkin mereka akan keluar sebentar lagi.&quot;</span>
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Tak lama kemudian, seekor tikus kecil muncul dari semak-semak, disusul dua tikus lainnya. Burung hantu pun menyambar salah satunya dengan cepat. Ia pulang ke sarangnya dengan membawa hasil. Anak-anaknya pun makan dengan
                     lahap. Seekor kelelawar yang melihat dari kejauhan terkesan dan bertanya,{' '}
-                    <span className="font-bold">
+                    <span className="font-bold bg-slate-400 px-1 rounded">
                       &quot;Bagaimana kau tahu harus menunggu di tempat itu?&quot; Burung hantu menjawab, &quot;Pengalaman mengajarku bahwa kadang yang kita butuhkan bukan lebih banyak tenaga, tapi lebih banyak kesabaran.&quot;
                     </span>
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="font-bold"> Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu.</span> Ia tak
-                    hanya dikenal sebagai pemburu malam yang handal, tetapi juga bijak dan penuh perhitungan. Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki. Bahkan di saat mendesak, burung hantu tetap
-                    memilih untuk berpikir jernih dan tidak gegabah.{' '}
+                    <span className="font-bold bg-slate-400 px-1 rounded">
+                      {' '}
+                      Sejak malam itu, burung hantu selalu mengajarkan kepada anak-anaknya bahwa keberhasilan sering datang kepada mereka yang tahu kapan harus bertindak dan kapan harus menunggu.
+                    </span>{' '}
+                    Ia tak hanya dikenal sebagai pemburu malam yang handal, tetapi juga bijak dan penuh perhitungan. Hewan-hewan di hutan menghormatinya karena ketenangan dan kesabaran yang ia miliki. Bahkan di saat mendesak, burung hantu
+                    tetap memilih untuk berpikir jernih dan tidak gegabah.{' '}
                   </p>
                 </div>
               </div>

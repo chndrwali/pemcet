@@ -332,21 +332,22 @@ const Page = () => {
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun, air sungai itu tampak keruh dan
-                    berwarna cokelat. <span className="text-red-600">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
+                    berwarna cokelat. <span className="bg-red-200 text-red-800 px-1 rounded">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
-                    <span className="text-red-600">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum
-                    perlahan dan merasa segar.
+                    <span className="bg-red-200 text-red-800 px-1 rounded">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat
+                    jernih. Kancil pun minum perlahan dan merasa segar.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot;{' '}
-                    <span className="text-red-600">Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
+                    <span className="bg-red-200 text-red-800 px-1 rounded">Kancil mengangguk dan mengucapkan terima kasih. Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan
+                    diri dari bahaya.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="text-red-600"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat.
-                    Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang
-                    cerdik, tetapi juga bijak dalam bersikap.
+                    <span className="bg-red-200 text-red-800 px-1 rounded"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus
+                    diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan
+                    hanya sebagai hewan yang cerdik, tetapi juga bijak dalam bersikap.
                   </p>
                 </div>
               </div>
@@ -521,22 +522,22 @@ const Page = () => {
                 <h1 className="font-bold text-center">Si Kancil dan Sungai yang Keruh</h1>
                 <div className="space-y-3">
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="font-bold">Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. </span> Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan sebuah sungai kecil. Namun,
-                    air sungai itu tampak keruh dan berwarna cokelat. <span className="font-bold">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
+                    <span className="font-bold bg-slate-400 px-1 rounded">Pagi itu, Si Kancil berjalan menyusuri hutan mencari air minum. </span> Musim kemarau membuat banyak sungai mengering. Setelah berjalan jauh, akhirnya ia menemukan
+                    sebuah sungai kecil. Namun, air sungai itu tampak keruh dan berwarna cokelat. <span className="font-bold bg-slate-400 px-1 rounded">Kancil ragu. Ia haus, tapi ia juga tahu bahwa air keruh bisa membuat perut sakit.</span>
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Ia berpikir sejenak. Lalu, datanglah seekor burung pipit. Burung itu menyapa Kancil dan berkata, &quot;Jika kamu sabar, tunggulah sebentar. Setelah tanah mengendap, air akan menjadi jernih.&quot;{' '}
-                    <span className="font-bold">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat jernih. Kancil pun minum
-                    perlahan dan merasa segar.
+                    <span className="font-bold bg-slate-400 px-1 rounded">Kancil duduk di bawah pohon rindang sambil menunggu. Ia mengamati aliran sungai dengan sabar. </span> Beberapa menit kemudian, air di tepi sungai mulai terlihat
+                    jernih. Kancil pun minum perlahan dan merasa segar.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
                     Burung pipit tersenyum dan berkata, &quot;Kadang kita hanya perlu bersabar agar bisa membuat keputusan yang baik.&quot; Kancil mengangguk dan mengucapkan terima kasih.{' '}
-                    <span className="font-bold"> Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
+                    <span className="font-bold bg-slate-400 px-1 rounded"> Sejak hari itu, Kancil tidak lagi terburu-buru dalam bertindak. </span> Ia belajar bahwa kesabaran bisa menyelamatkan diri dari bahaya.
                   </p>
                   <p className="whitespace-pre-wrap break-words w-full pl-8 pr-10 indent-6">
-                    <span className="font-bold"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus diselesaikan dengan cepat.
-                    Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan hanya sebagai hewan yang
-                    cerdik, tetapi juga bijak dalam bersikap.
+                    <span className="font-bold bg-slate-400 px-1 rounded"> Sejak kejadian itu, Kancil sering menceritakan pengalamannya kepada hewan-hewan lain di hutan. </span> Ia ingin semua temannya tahu bahwa tidak semua hal harus
+                    diselesaikan dengan cepat. Beberapa keputusan perlu waktu dan ketenangan. Bahkan saat menghadapi masalah yang mendesak, seperti rasa haus di musim kemarau, kesabaran tetap menjadi kunci utama. Kini, Kancil dikenal bukan
+                    hanya sebagai hewan yang cerdik, tetapi juga bijak dalam bersikap.
                   </p>
                 </div>
               </div>
